@@ -10,33 +10,63 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as TreksIndexRouteImport } from './routes/treks.index'
+import { Route as TreksSlugRouteImport } from './routes/treks.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TreksIndexRoute = TreksIndexRouteImport.update({
+  id: '/treks/',
+  path: '/treks/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TreksSlugRoute = TreksSlugRouteImport.update({
+  id: '/treks/$slug',
+  path: '/treks/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/treks/$slug': typeof TreksSlugRoute
+  '/treks/': typeof TreksIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/treks/$slug': typeof TreksSlugRoute
+  '/treks': typeof TreksIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/treks/$slug': typeof TreksSlugRoute
+  '/treks/': typeof TreksIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/contact' | '/treks/$slug' | '/treks/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/contact' | '/treks/$slug' | '/treks'
+  id: '__root__' | '/' | '/contact' | '/treks/$slug' | '/treks/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ContactRoute: typeof ContactRoute
+  TreksSlugRoute: typeof TreksSlugRoute
+  TreksIndexRoute: typeof TreksIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +78,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/treks/': {
+      id: '/treks/'
+      path: '/treks'
+      fullPath: '/treks/'
+      preLoaderRoute: typeof TreksIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/treks/$slug': {
+      id: '/treks/$slug'
+      path: '/treks/$slug'
+      fullPath: '/treks/$slug'
+      preLoaderRoute: typeof TreksSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContactRoute: ContactRoute,
+  TreksSlugRoute: TreksSlugRoute,
+  TreksIndexRoute: TreksIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
