@@ -5,14 +5,14 @@ export type Photo = { src: string; alt: string; credit: string; license: string;
 type RawPhoto = { url: string; page: string; license: string; artist: string };
 const P = photos as Record<string, RawPhoto[]>;
 
-function pics(slug: string, captions: string[]): Photo[] {
+function pics(slug: string, captions: string[]): [Photo, ...Photo[]] {
   return (P[slug] ?? []).map((p, i) => ({
     src: p.url,
     alt: captions[i] ?? captions[0],
     credit: p.artist || "Wikimedia Commons contributor",
     license: p.license,
     page: p.page,
-  }));
+  })) as [Photo, ...Photo[]];
 }
 
 export type Pkg = {
@@ -41,7 +41,7 @@ export type FeaturedTrek = {
   excludes?: string[];
   requirements?: string;
   notes?: string[];
-  photos: Photo[];
+  photos: [Photo, ...Photo[]];
 };
 
 export const FEATURED: FeaturedTrek[] = [
@@ -350,7 +350,7 @@ export const OTHERS: OtherTrek[] = RAW.map(([slug, name, altitude, difficulty, s
   altitude,
   difficulty,
   season,
-  photo: pics(slug, [caption])[0],
+  photo: pics(slug, [caption])[0]!,
 }));
 
 export const RENTALS = [

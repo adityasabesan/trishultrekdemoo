@@ -11,7 +11,7 @@ describe("trek catalogue", () => {
     for (const t of FEATURED) expect(new Set(t.photos.map((p) => p.src)).size).toBeGreaterThanOrEqual(3);
   });
   it("uses a distinct photo for every trek card", () => {
-    const srcs = [...FEATURED.map((t) => t.photos[0].src), ...OTHERS.map((t) => t.photo.src)];
+    const srcs = [...FEATURED.map((t) => t.photos[0]!.src), ...OTHERS.map((t) => t.photo.src)];
     expect(new Set(srcs).size).toBe(28);
   });
   it("keeps supplied package prices", () => {
