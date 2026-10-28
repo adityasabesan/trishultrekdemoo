@@ -10,7 +10,7 @@ import summitGroup from "@/assets/Trek_everyone_image.jpeg.asset.json";
 import trailGroup from "@/assets/trek_ppl.jpeg.asset.json";
 import sunrise from "@/assets/summit-sunrise.jpeg.asset.json";
 
-const HERO = FEATURED[0].photos[0];
+const HERO = FEATURED[0]!.photos[0];
 
 export const Route = createFileRoute("/")({
   head: () => ({

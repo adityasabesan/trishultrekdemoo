@@ -55,7 +55,7 @@ function Contact() {
           <h2 className="text-3xl">Send an enquiry</h2>
           <p className="mt-2 text-sm text-muted-foreground">Your message opens in WhatsApp (or email) so it reaches our team directly.</p>
           <div className="mt-8">
-            <EnquiryForm trek={trek} pkg={pkg} />
+            <EnquiryForm trek={trek ?? ""} pkg={pkg ?? ""} />
           </div>
         </div>
       </section>
