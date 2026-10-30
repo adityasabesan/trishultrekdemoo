@@ -45,7 +45,7 @@ function TrekPage() {
       <section className="relative min-h-[80vh] overflow-hidden">
         <img src={hero.src} alt={hero.alt} className="absolute inset-0 h-full w-full object-cover" />
         <div className="hero-scrim absolute inset-0" />
-        <SiteHeader overlay />
+        <SiteHeader />
         <div className="relative z-10 mx-auto flex min-h-[80vh] max-w-7xl flex-col justify-end px-5 pb-16 text-forest-foreground md:px-10">
           <Link to="/treks" className="eyebrow text-ochre">← All treks</Link>
           <h1 className="rise mt-4 text-6xl md:text-8xl">{t.name}</h1>
@@ -97,7 +97,7 @@ function TrekPage() {
                 </ul>
                 {p.note && <p className="mt-4 text-sm text-muted-foreground">{p.note}</p>}
                 <a
-                  href={waLink(`Hello Trishul Treks, I'm interested in the ${t.name} trek — ${p.name} package (${inr(p.price)} per person).`)}
+                  href={waLink(`Hello Trishul Treks, I'm interested in the ${t.name} Trek (${p.name} package). Please share the available dates, package details, and booking information.`)}
                   target="_blank"
                   rel="noreferrer"
                   className="mt-6 inline-flex rounded-sm bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-forest"
@@ -144,7 +144,7 @@ function TrekPage() {
           <h2 className="text-4xl md:text-5xl">Plan your {t.name} trek</h2>
           <p className="mt-3 opacity-75">Fill this in and we'll continue on WhatsApp.</p>
           <div className="mt-10 rounded-sm bg-background p-6 text-foreground md:p-10">
-            <EnquiryForm trek={t.name} />
+            <EnquiryForm type="Trek" item={t.name} />
           </div>
         </div>
       </section>

@@ -16,7 +16,7 @@ function pics(slug: string, captions: string[]): [Photo, ...Photo[]] {
 }
 
 export type Pkg = {
-  name: "Standard" | "Comfort";
+  name: "Standard" | "Premium";
   price: number;
   transport?: string;
   stay?: string;
