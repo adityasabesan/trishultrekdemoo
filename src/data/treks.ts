@@ -324,3 +324,145 @@ export const FEATURED: FeaturedTrek[] = [
   },
 ];
 
+export type OtherTrek = {
+  slug: string;
+  name: string;
+  altitude: string | null;
+  difficulty: string;
+  season: string;
+  summary: string;
+  /** Indicative duration derived from the outline itinerary; final plan confirmed on enquiry. */
+  duration: string;
+  itinerary: Day[];
+  photo: Photo;
+};
+
+type RawOther = [slug: string, name: string, altitude: string | null, difficulty: string, season: string, caption: string, summary: string, days: string[]];
+
+// Itineraries for these treks are indicative route outlines, not the company's
+// confirmed operating plan. Pages label them as such.
+const RAW: RawOther[] = [
+  ["gaumukh", "Gaumukh", "13,200 ft", "Moderate", "May–Jun, Sep–Oct", "The Gaumukh snout of the Gangotri glacier",
+    "A walk up the Bhagirathi valley from Gangotri to Gaumukh, the ice snout of the Gangotri glacier and source of the Ganga.",
+    ["Dehradun to Gangotri by road", "Gangotri to Chirbasa", "Chirbasa to Bhojbasa", "Bhojbasa to Gaumukh and back to Bhojbasa", "Bhojbasa to Gangotri", "Gangotri to Dehradun"]],
+  ["kedar-tal", "Kedar Tal", "15,580 ft", "Difficult", "May–Jun, Sep–Oct", "Thalay Sagar reflected in Kedar Tal",
+    "A steep climb from Gangotri along the Kedar Ganga to a glacial lake beneath Thalay Sagar peak.",
+    ["Dehradun to Gangotri by road", "Acclimatisation day at Gangotri", "Gangotri to Bhoj Kharak", "Bhoj Kharak to Kedar Kharak", "Kedar Kharak to Kedar Tal", "Kedar Tal to Bhoj Kharak", "Bhoj Kharak to Gangotri", "Gangotri to Dehradun"]],
+  ["bandarpunch-base-camp", "Bandarpunch Base Camp", "14,000 ft", "Difficult", "May–Jun, Sep–Oct", "Bandarpunch massif rising above forested ridges",
+    "A high trek through the Ruinsara valley from Sankri to the foot of the Bandarpunch massif.",
+    ["Dehradun to Sankri", "Sankri to Taluka by road, trek to Seema", "Seema to Rainbasera", "Rainbasera to Ruinsara Tal", "Ruinsara Tal to Bandarpunch Base Camp", "Base camp to Ruinsara Tal", "Ruinsara Tal to Seema", "Seema to Taluka, drive to Sankri", "Sankri to Dehradun"]],
+  ["jandi-top", "Jandi Top", "12,000 ft", "Moderate", "Dec–Mar, Sep–Nov", "Sunset over the hills around Sankri, gateway to Jandi Top",
+    "A short summit trek in the hills around Sankri with open views of the surrounding ranges.",
+    ["Dehradun to Sankri", "Sankri to the trail camp", "Summit Jandi Top and descend to camp", "Return to Sankri", "Sankri to Dehradun"]],
+  ["dodital", "Dodital", "10,800 ft", "Moderate", "Mar–Jun, Sep–Dec", "Dodital lake ringed by forest",
+    "A forest trek from Sangamchatti near Uttarkashi to Dodital, a lake ringed by oak, pine and deodar.",
+    ["Dehradun to Uttarkashi and Sangamchatti, trek to Agoda", "Agoda to Dodital", "Rest and explore around Dodital", "Dodital to Agoda and Sangamchatti", "Sangamchatti to Dehradun"]],
+  ["darwa-pass", "Darwa Pass", "13,600 ft", "Moderate", "May–Jun, Sep–Oct", "Camping area at Dodital, the base for Darwa Pass",
+    "An extension of the Dodital trek that climbs above the lake to Darwa Pass, with views towards Bandarpunch.",
+    ["Dehradun to Uttarkashi and Sangamchatti, trek to Agoda", "Agoda to Dodital", "Dodital to Darwa Pass and back to Dodital", "Dodital to Agoda", "Agoda to Sangamchatti, drive to Dehradun"]],
+  ["phulara-ridge", "Phulara Ridge", "12,345 ft", "Moderate", "May–Jun, Sep–Nov", "Phulara ridge with snow peaks beyond",
+    "A ridge walk above Sankri with long views across the Har Ki Dun and Ruinsara valleys.",
+    ["Dehradun to Sankri", "Sankri to Pushtara meadows", "Pushtara along Phulara Ridge to camp", "Descend towards Taluka", "Return to Sankri", "Sankri to Dehradun"]],
+  ["surya-top", "Surya Top", "12,950 ft", "Easy–Moderate", "Dec–Mar, Apr–Jun, Sep–Oct", "Himalayan view over the Sankri ranges near Surya Top",
+    "A summit trek in the Sankri ranges, known for wide sunrise views over the surrounding peaks.",
+    ["Dehradun to Sankri", "Sankri to the trail camp", "Summit Surya Top and descend to camp", "Return to Sankri", "Sankri to Dehradun"]],
+  ["ruinsara-tal", "Ruinsara Tal", "11,800 ft", "Moderate", "May–Jun, Sep–Oct", "Ruinsara Tal lake in its glacial valley",
+    "A valley trek from Sankri along the Supin and Ruinsara Gad to a lake below the Bandarpunch and Kalanag peaks.",
+    ["Dehradun to Sankri", "Sankri to Taluka by road, trek to Seema", "Seema to Rainbasera", "Rainbasera to Ruinsara Tal", "Ruinsara Tal to Seema", "Seema to Taluka, drive to Sankri", "Sankri to Dehradun"]],
+  ["borasu-pass", "Borasu Pass", "17,880 ft", "Difficult", "May–Jun, Sep–Oct", "Snowfields on the approach to Borasu Pass",
+    "A high crossover from Har Ki Dun over Borasu Pass into the Baspa valley of Himachal, ending at Chitkul.",
+    ["Dehradun to Sankri", "Sankri to Taluka by road, trek to Seema", "Seema to Har Ki Dun", "Rest and acclimatise at Har Ki Dun", "Har Ki Dun to Borasu Pass base", "Cross Borasu Pass, descend to camp", "Descend to Chitkul", "Chitkul to onward travel"]],
+  ["tapovan", "Tapovan", "14,203 ft", "Moderate–Difficult", "May–Jun, Sep–Oct", "Shivling peak above the Tapovan meadow",
+    "Beyond Gaumukh, across the Gangotri glacier moraine to the high meadow of Tapovan beneath Shivling.",
+    ["Dehradun to Gangotri by road", "Acclimatisation day at Gangotri", "Gangotri to Chirbasa", "Chirbasa to Bhojbasa", "Bhojbasa via Gaumukh to Tapovan", "Explore Tapovan", "Tapovan to Bhojbasa", "Bhojbasa to Gangotri", "Gangotri to Dehradun"]],
+  ["nandanvan", "Nandanvan", "14,240 ft", "Moderate–Difficult", "May–Jun, Sep–Oct", "Bhagirathi II and III peaks above Nandanvan",
+    "A glacier trek beyond Gaumukh to Nandanvan meadow, facing the Bhagirathi peaks.",
+    ["Dehradun to Gangotri by road", "Acclimatisation day at Gangotri", "Gangotri to Bhojbasa", "Bhojbasa via Gaumukh to Nandanvan", "Explore Nandanvan", "Nandanvan via Gaumukh to Bhojbasa", "Bhojbasa to Gangotri", "Gangotri to Dehradun"]],
+  ["vasuki-tal", "Vasuki Tal", "15,750 ft", "Difficult", "May–Jun, Sep–Oct", "Tents at the Vasuki Tal campsite",
+    "A high-altitude lake above Kedarnath, reached by a steep climb past the Kedarnath shrine.",
+    ["Dehradun to Sonprayag by road", "Gaurikund to Kedarnath", "Kedarnath to Vasuki Tal", "Vasuki Tal to Kedarnath", "Kedarnath to Gaurikund", "Sonprayag to Dehradun"]],
+  ["gangotri", "Gangotri", "10,200 ft", "Easy–Moderate", "Apr–Jun, Sep–Nov", "Gangotri temple and town in the Bhagirathi valley",
+    "A gentle trip to the Gangotri temple town in the Bhagirathi valley, with short walks around the shrine.",
+    ["Dehradun to Uttarkashi", "Uttarkashi to Gangotri, visit the temple", "Short walks around Gangotri", "Gangotri to Dehradun"]],
+  ["kalindi-khal", "Kalindi Khal", "19,520 ft", "Technical", "Jun, Aug–Sep", "Sunrise over the snow at Kalindi Khal",
+    "One of the highest trekking passes in the Garhwal Himalaya, crossing from Gangotri to Badrinath over glacier terrain.",
+    ["Dehradun to Gangotri by road", "Acclimatisation day at Gangotri", "Gangotri to Bhojbasa", "Bhojbasa via Gaumukh to Tapovan", "Rest and acclimatise at Tapovan", "Tapovan to Nandanvan", "Nandanvan to Vasuki Tal", "Vasuki Tal to Khara Pathar", "Khara Pathar to Sweta Glacier", "Sweta Glacier to Kalindi Base", "Cross Kalindi Khal, descend to Rajparav", "Rajparav to Arwa Tal", "Arwa Tal to Ghastoli, drive to Badrinath", "Badrinath to Dehradun"]],
+  ["lamkhaga-pass", "Lamkhaga Pass", "17,320 ft", "Technical", "Jun, Sep–Oct", "The valley at Chitkul, where Lamkhaga Pass ends",
+    "A remote high crossover from Harsil in Uttarakhand to Chitkul in Himachal's Baspa valley.",
+    ["Dehradun to Harsil by road", "Harsil into the Jalandhari Gad valley", "Up the valley to the upper camp", "Upper camp to Lamkhaga base", "Cross Lamkhaga Pass, descend to camp", "Descend towards the Baspa valley", "Reach Chitkul", "Chitkul to onward travel"]],
+  ["black-peak-base-camp", "Black Peak Base Camp", "13,300 ft", "Difficult", "May–Jun, Sep–Oct", "Kalanag (Black Peak) seen from Debsu Bugyal",
+    "A trek from Sankri through the Ruinsara valley to the base of Kalanag, the 'Black Peak'.",
+    ["Dehradun to Sankri", "Sankri to Taluka by road, trek to Seema", "Seema to Rainbasera", "Rainbasera to Ruinsara Tal", "Ruinsara Tal to Black Peak Base Camp", "Base camp to Ruinsara Tal", "Ruinsara Tal to Seema", "Seema to Taluka, drive to Sankri", "Sankri to Dehradun"]],
+  ["kyarkoti-lake", "Kyarkoti Lake", "13,700 ft", "Difficult", "May–Jun, Sep–Oct", "Kyarkoti camping ground in the upper Har Ki Dun valley",
+    "Beyond Har Ki Dun to the remote Kyarkoti lake in the upper valley.",
+    ["Dehradun to Sankri", "Sankri to Taluka by road, trek to Seema", "Seema to Har Ki Dun", "Har Ki Dun to Kyarkoti", "Kyarkoti to Har Ki Dun", "Har Ki Dun to Seema", "Seema to Taluka, drive to Sankri", "Sankri to Dehradun"]],
+  ["nachiketa-tal", "Nachiketa Tal", "8,050 ft", "Easy", "Mar–Jun, Sep–Dec", "Bhagirathi river valley in Uttarkashi district",
+    "An easy forest walk near Uttarkashi to a quiet lake surrounded by oak and pine — good for families and beginners.",
+    ["Dehradun to Uttarkashi", "Drive to Chaurangi Khal, walk to Nachiketa Tal and back", "Uttarkashi to Dehradun"]],
+  ["manjhi-forest-trek", "Manjhi Forest Trek", "10,000 ft", "Easy–Moderate", "Mar–Jun, Sep–Dec", "Forested Harsil valley in Uttarkashi district",
+    "A forest trek in Uttarkashi district through dense woodland and clearings.",
+    ["Dehradun to the trek base", "Trek through the forest to camp", "Explore and return to the base", "Return to Dehradun"]],
+  ["baradsar", "Baradsar", "15,100 ft", "Moderate–Difficult", "May–Jun, Sep–Oct", "Terraced fields at Datmir village on the Baradsar approach",
+    "A high lake trek approached from Datmir village near Sankri, through forest and alpine meadow.",
+    ["Dehradun to Sankri", "Sankri to Datmir, trek to forest camp", "Forest camp to meadow camp", "Meadow camp to Baradsar lake and back", "Return to Datmir, drive to Sankri", "Sankri to Dehradun"]],
+  ["sadhara-pani", "Sadhara Pani", null, "Easy–Moderate", "Mar–Jun, Sep–Nov", "Hills near Mori in the Tons valley",
+    "A short trek in the hills of the Tons valley near Mori.",
+    ["Dehradun to the trek base near Mori", "Trek to Sadhara Pani", "Return to the base", "Return to Dehradun"]],
+];
+
+export const OTHERS: OtherTrek[] = RAW.map(([slug, name, altitude, difficulty, season, caption, summary, days]) => ({
+  slug,
+  name,
+  altitude,
+  difficulty,
+  season,
+  summary,
+  duration: `About ${days.length} days`,
+  itinerary: days.map((title, i) => ({ day: i + 1, title })),
+  photo: pics(slug, [caption])[0]!,
+}));
+
+export type Pilgrimage = { slug: string; name: string; duration: string | null; price: number | null; summary: string; photo: Photo };
+
+export const PILGRIMAGES: Pilgrimage[] = [
+  { slug: "char-dham", name: "Char Dham Yatra Expedition", duration: "11 days / 10 nights", price: 24500,
+    summary: "Yamunotri, Gangotri, Kedarnath and Badrinath in one journey.",
+    photo: pics("pilgrimage-char-dham", ["Yamunotri temple beneath snow-capped peaks"])[0]! },
+  { slug: "kedarnath-heli", name: "Kedarnath Temple Trek & Helicopter Package", duration: "5 days / 4 nights", price: 14999,
+    summary: "A visit to the Kedarnath shrine in the Mandakini valley.",
+    photo: pics("pilgrimage-kedarnath", ["Kedarnath temple with mountains behind"])[0]! },
+  { slug: "hemkund-badrinath", name: "Hemkund Sahib & Badrinath Tour", duration: "6 days / 5 nights", price: 10500,
+    summary: "The Hemkund Sahib gurdwara beside Lokpal lake, and the Badrinath temple.",
+    photo: pics("pilgrimage-hemkund", ["Hemkund Sahib gurdwara beside Lokpal lake"])[0]! },
+  { slug: "do-dham", name: "Do Dham Yatra — Kedarnath & Badrinath", duration: null, price: null,
+    summary: "Kedarnath and Badrinath together. Duration and price to be confirmed.",
+    photo: pics("pilgrimage-do-dham", ["Badrinath temple facade in the early morning"])[0]! },
+];
+
+export type Rental = { slug: string; item: string; price: number; description: string; photo: Photo };
+
+const R = (slug: string, item: string, price: number, description: string, caption: string): Rental => ({
+  slug, item, price, description, photo: pics(`rental-${slug}`, [caption])[0]!,
+});
+
+export const RENTALS: Rental[] = [
+  R("jacket", "Trekking Jacket", 500, "A warm outer layer for cold mornings, camps and summit pushes.", "A hiker in a hooded jacket looking over a forested valley"),
+  R("shoes", "Trekking Shoes", 500, "Ankle-support trekking footwear for rocky, muddy and snowy trails.", "A pair of high-ankle trekking boots"),
+  R("pole", "Trekking Pole", 500, "Adds balance on steep climbs and takes load off your knees on descents.", "A pair of collapsible trekking poles"),
+  R("torch", "Head Torch", 300, "Hands-free light for early summit starts and evenings at camp.", "An LED head torch"),
+  R("cap", "Woollen Cap", 300, "Keeps your head and ears warm at altitude.", "A trekker in a woollen cap facing snowy mountains"),
+  R("socks", "Woollen Socks", 250, "Warm socks for cold nights and snow days.", "Hand-knitted woollen socks"),
+  R("poncho", "Poncho", 250, "A light rain cover that fits over you and your backpack.", "A person wearing a rain poncho in a forest"),
+];
+
+export const inr = (n: number) => `₹${n.toLocaleString("en-IN")}`;
+export const getFeatured = (slug: string) => FEATURED.find((t) => t.slug === slug);
+export const getOther = (slug: string) => OTHERS.find((t) => t.slug === slug);
+export const ALL_TREK_NAMES = [...FEATURED.map((t) => t.name), ...OTHERS.map((t) => t.name)];
+
+export const trekMsg = (name: string, pkg?: string) =>
+  `Hello, I am interested in the ${name} Trek${pkg ? ` (${pkg} package)` : ""}. Please share the available dates, package details, and booking information.`;
+export const pilgrimageMsg = (name: string) =>
+  `Hello, I am interested in the ${name}. Please share the available dates, package details, and booking information.`;
+export const rentalMsg = (item: string) =>
+  `Hello, I am interested in renting ${item.toLowerCase()}. Please share the availability and rental details.`;
