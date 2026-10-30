@@ -29,20 +29,16 @@ export type Enquiry = z.infer<typeof enquirySchema>;
 
 export function buildEnquiryText(d: Enquiry) {
   const itemLabel = d.type === "Rental" ? "Rental item" : d.type === "Pilgrimage Package" ? "Package" : "Trek";
-  return [
-    `Hello Trishul Treks, I would like to make an enquiry.`,
-    ``,
+  const lines = [
     `Name: ${d.name}`,
     `Phone: ${d.phone}`,
     `Enquiry type: ${d.type}`,
-    d.item && `${itemLabel}: ${d.item}`,
-    d.date && `Preferred date: ${d.date}`,
+    d.item ? `${itemLabel}: ${d.item}` : null,
+    d.date ? `Preferred date: ${d.date}` : null,
     `Number of people: ${d.people}`,
-    d.message && `Message: ${d.message}`,
-  ]
-    .filter((x) => x !== false && x !== undefined && x !== "" || x === "")
-    .filter((x, i, a) => !(x === "" && a[i - 1] === ""))
-    .join("\n");
+    d.message ? `Message: ${d.message}` : null,
+  ].filter((x): x is string => x !== null);
+  return ["Hello Trishul Treks, I would like to make an enquiry.", "", ...lines].join("\n");
 }
 
 export function EnquiryForm({ type: initialType = "Trek", item = "" }: { type?: EnquiryType; item?: string }) {
