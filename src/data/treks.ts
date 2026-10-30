@@ -16,7 +16,7 @@ function pics(slug: string, captions: string[]): [Photo, ...Photo[]] {
 }
 
 export type Pkg = {
-  name: "Budget" | "Comfort";
+  name: "Standard" | "Comfort";
   price: number;
   transport?: string;
   stay?: string;
@@ -34,6 +34,8 @@ export type FeaturedTrek = {
   altitude: string;
   duration: string;
   tagline: string;
+  difficulty: string;
+  highlights: string[];
   summary: string;
   season: string;
   packages: Pkg[];
@@ -49,14 +51,16 @@ export const FEATURED: FeaturedTrek[] = [
     slug: "kedarkantha",
     name: "Kedarkantha",
     altitude: "12,500 ft",
-    duration: "5 nights / 6 days",
+    duration: "6 days / 5 nights",
     tagline: "The classic winter summit above Sankri",
+    difficulty: "Easy–Moderate",
+    highlights: ["Summit at 12,500 ft with a 360° Himalayan view", "Frozen Juda Ka Talab lake", "Pine and oak forest above Sankri", "Snow from December to January"],
     summary:
       "A summit trek from Sankri through pine forest and the frozen Juda Ka Talab to a 12,500 ft peak, with snow from December to January.",
     season: "November–April; December–January for snow",
     packages: [
       {
-        name: "Budget",
+        name: "Standard",
         price: 6500,
         transport: "Shared Dehradun–Sankri return transport",
         stay: "Sankri homestay and triple-sharing tents",
@@ -65,7 +69,7 @@ export const FEATURED: FeaturedTrek[] = [
         group: "12–15 trekkers",
       },
       {
-        name: "Comfort",
+        name: "Premium",
         price: 9500,
         transport: "Innova/Bolero return transport",
         stay: "Hotel and double-sharing tents",
@@ -93,14 +97,16 @@ export const FEATURED: FeaturedTrek[] = [
     slug: "dayara-bugyal",
     name: "Dayara Bugyal",
     altitude: "12,000 ft",
-    duration: "3 nights / 4 days",
+    duration: "4 days / 3 nights",
     tagline: "High meadows above Raithal",
+    difficulty: "Easy–Moderate",
+    highlights: ["Wide alpine meadows of Dayara", "Bakaria Top ridge", "Starts from Raithal village", "A short trek for first-timers"],
     summary:
       "A short trek from Raithal village to the wide alpine meadows of Dayara and Bakaria Top — grassland in summer, snowfields in winter.",
     season: "Ask us for current conditions",
     packages: [
       {
-        name: "Budget",
+        name: "Standard",
         price: 5500,
         transport: "Shared Dehradun–Raithal return",
         stay: "Homestay/tent, triple sharing",
@@ -109,7 +115,7 @@ export const FEATURED: FeaturedTrek[] = [
         group: "10–15 trekkers",
       },
       {
-        name: "Comfort",
+        name: "Premium",
         price: 8500,
         transport: "Private car/Innova",
         stay: "Raithal hotel and Swiss tent, double sharing",
@@ -136,14 +142,16 @@ export const FEATURED: FeaturedTrek[] = [
     slug: "kuari-pass",
     name: "Kuari Pass",
     altitude: "12,516 ft",
-    duration: "5 nights / 6 days",
+    duration: "6 days / 5 nights",
     tagline: "Big-mountain views from Joshimath",
+    difficulty: "Moderate",
+    highlights: ["Views of Dunagiri and the Garhwal giants", "Oak and rhododendron forest", "Tali forest camp", "Starts from Joshimath"],
     summary:
       "From Joshimath through oak and rhododendron to Kuari Pass, with wide views of the Garhwal giants including Dunagiri.",
     season: "December–April snow; May–June green; September–November clearer views",
     packages: [
       {
-        name: "Budget",
+        name: "Standard",
         price: 8500,
         transport: "Shared Dehradun–Joshimath return transport",
         stay: "Joshimath hotel and triple-sharing tents",
@@ -152,7 +160,7 @@ export const FEATURED: FeaturedTrek[] = [
         note: "Group size for this package not confirmed — please ask.",
       },
       {
-        name: "Comfort",
+        name: "Premium",
         price: 13500,
         transport: "Private Innova return transport",
         stay: "Hotels in Joshimath and Auli plus double-sharing tents",
@@ -179,14 +187,16 @@ export const FEATURED: FeaturedTrek[] = [
     slug: "har-ki-dun",
     name: "Har Ki Dun",
     altitude: "11,700 ft",
-    duration: "6 nights / 7 days",
+    duration: "7 days / 6 nights",
     tagline: "The valley of the gods",
+    difficulty: "Easy–Moderate",
+    highlights: ["Old wooden villages along the Supin river", "The cradle-shaped Har Ki Dun valley", "Snow peaks of the Sankri range", "Valley walk without a high summit push"],
     summary:
       "A valley trek from Sankri past old wooden villages along the Supin river to the cradle-shaped Har Ki Dun valley.",
     season: "March–June and September–November",
     packages: [
       {
-        name: "Budget",
+        name: "Standard",
         price: 9500,
         transport: "Shared Bolero/Traveller (10–12 travellers)",
         stay: "Sankri homestay and triple-sharing tents",
@@ -195,7 +205,7 @@ export const FEATURED: FeaturedTrek[] = [
         group: "12–15 trekkers",
       },
       {
-        name: "Comfort",
+        name: "Premium",
         price: 14500,
         transport: "Innova/Bolero return transport",
         stay: "Sankri hotel and double-sharing tents",
@@ -224,14 +234,16 @@ export const FEATURED: FeaturedTrek[] = [
     slug: "bali-pass",
     name: "Bali Pass",
     altitude: "16,207 ft",
-    duration: "7 nights / 8 days",
+    duration: "8 days / 7 nights",
     tagline: "A demanding high crossing to Yamunotri",
+    difficulty: "Difficult",
+    highlights: ["High crossing at 16,207 ft", "Ruinsara Tal lake", "Descent to Yamunotri", "For experienced trekkers only"],
     summary:
       "A demanding high-altitude crossover from Sankri via Ruinsara Tal over Bali Pass, descending to Yamunotri. For experienced trekkers only.",
     season: "May–June and September–October",
     packages: [
       {
-        name: "Budget",
+        name: "Standard",
         price: 22500,
         transport: "Shared Dehradun–Sankri return",
         stay: "Homestay and triple-sharing tents",
@@ -240,7 +252,7 @@ export const FEATURED: FeaturedTrek[] = [
         group: "10–12 trekkers",
       },
       {
-        name: "Comfort",
+        name: "Premium",
         price: 32500,
         transport: "Innova/Bolero return",
         stay: "Sankri hotel and higher-quality double-sharing tents",
@@ -271,20 +283,22 @@ export const FEATURED: FeaturedTrek[] = [
     slug: "rupin-pass",
     name: "Rupin Pass",
     altitude: "15,380 ft",
-    duration: "7 nights / 8 days",
+    duration: "8 days / 7 nights",
     tagline: "Dhaula to Sangla crossover",
+    difficulty: "Difficult",
+    highlights: ["Hanging villages of the Rupin valley", "Three-tiered Rupin waterfall", "Snow-wall climb to the pass", "Crossover from Uttarakhand into Himachal"],
     summary:
       "A crossover from Uttarakhand into Himachal: hanging villages, the three-tiered Rupin waterfall and a snow-wall climb to the pass before Sangla.",
     season: "May–June and September–October",
     packages: [
       {
-        name: "Budget",
+        name: "Standard",
         price: 16500,
         includes: ["Package route: Dhaula to Sangla"],
         note: "Onward transport to Shimla or Chandigarh is not included. Other inclusions and group size to be confirmed — please ask.",
       },
       {
-        name: "Comfort",
+        name: "Premium",
         price: 25500,
         includes: ["Dehradun pickup to Shimla drop"],
         note: "Other inclusions and group size to be confirmed — please ask.",
@@ -310,59 +324,3 @@ export const FEATURED: FeaturedTrek[] = [
   },
 ];
 
-export type OtherTrek = {
-  slug: string;
-  name: string;
-  altitude: string | null;
-  difficulty: string;
-  season: string;
-  photo: Photo;
-};
-
-const RAW: [string, string, string | null, string, string, string][] = [
-  ["gaumukh", "Gaumukh", "13,200 ft", "Moderate", "May–Jun, Sep–Oct", "The Gaumukh snout of the Gangotri glacier"],
-  ["kedar-tal", "Kedar Tal", "15,580 ft", "Difficult", "May–Jun, Sep–Oct", "Thalay Sagar reflected in Kedar Tal"],
-  ["bandarpunch-base-camp", "Bandarpunch Base Camp", "14,000 ft", "Difficult", "May–Jun, Sep–Oct", "Bandarpunch massif rising above forested ridges"],
-  ["jandi-top", "Jandi Top", "12,000 ft", "Moderate", "Dec–Mar, Sep–Nov", "Sunset over the hills around Sankri, gateway to Jandi Top"],
-  ["dodital", "Dodital", "10,800 ft", "Moderate", "Mar–Jun, Sep–Dec", "Dodital lake ringed by forest"],
-  ["darwa-pass", "Darwa Pass", "13,600 ft", "Moderate", "May–Jun, Sep–Oct", "Camping area at Dodital, the base for Darwa Pass"],
-  ["phulara-ridge", "Phulara Ridge", "12,345 ft", "Moderate", "May–Jun, Sep–Nov", "Phulara ridge with snow peaks beyond"],
-  ["surya-top", "Surya Top", "12,950 ft", "Easy–Moderate", "Dec–Mar, Apr–Jun, Sep–Oct", "Himalayan view over the Sankri ranges near Surya Top"],
-  ["ruinsara-tal", "Ruinsara Tal", "11,800 ft", "Moderate", "May–Jun, Sep–Oct", "Ruinsara Tal lake in its glacial valley"],
-  ["borasu-pass", "Borasu Pass", "17,880 ft", "Difficult", "May–Jun, Sep–Oct", "Snowfields on the approach to Borasu Pass"],
-  ["tapovan", "Tapovan", "14,203 ft", "Moderate–Difficult", "May–Jun, Sep–Oct", "Shivling peak above the Tapovan meadow"],
-  ["nandanvan", "Nandanvan", "14,240 ft", "Moderate–Difficult", "May–Jun, Sep–Oct", "Bhagirathi II and III peaks above Nandanvan"],
-  ["vasuki-tal", "Vasuki Tal", "15,750 ft", "Difficult", "May–Jun, Sep–Oct", "Tents at the Vasuki Tal campsite"],
-  ["gangotri", "Gangotri", "10,200 ft", "Easy–Moderate", "Apr–Jun, Sep–Nov", "Gangotri temple and town in the Bhagirathi valley"],
-  ["kalindi-khal", "Kalindi Khal", "19,520 ft", "Technical", "Jun, Aug–Sep", "Sunrise over the snow at Kalindi Khal"],
-  ["lamkhaga-pass", "Lamkhaga Pass", "17,320 ft", "Technical", "Jun, Sep–Oct", "The valley at Chitkul, where Lamkhaga Pass ends"],
-  ["black-peak-base-camp", "Black Peak Base Camp", "13,300 ft", "Difficult", "May–Jun, Sep–Oct", "Kalanag (Black Peak) seen from Debsu Bugyal"],
-  ["kyarkoti-lake", "Kyarkoti Lake", "13,700 ft", "Difficult", "May–Jun, Sep–Oct", "Kyarkoti camping ground in the upper Har Ki Dun valley"],
-  ["nachiketa-tal", "Nachiketa Tal", "8,050 ft", "Easy", "Mar–Jun, Sep–Dec", "Bhagirathi river valley in Uttarkashi district"],
-  ["manjhi-forest-trek", "Manjhi Forest Trek", "10,000 ft", "Easy–Moderate", "Mar–Jun, Sep–Dec", "Forested Harsil valley in Uttarkashi district"],
-  ["baradsar", "Baradsar", "15,100 ft", "Moderate–Difficult", "May–Jun, Sep–Oct", "Terraced fields at Datmir village on the Baradsar approach"],
-  ["sadhara-pani", "Sadhara Pani", null, "Easy–Moderate", "Mar–Jun, Sep–Nov", "Hills near Mori in the Tons valley"],
-];
-
-export const OTHERS: OtherTrek[] = RAW.map(([slug, name, altitude, difficulty, season, caption]) => ({
-  slug,
-  name,
-  altitude,
-  difficulty,
-  season,
-  photo: pics(slug, [caption])[0]!,
-}));
-
-export const RENTALS = [
-  { item: "Trekking jacket", price: 500 },
-  { item: "Trekking shoes", price: 500 },
-  { item: "Trekking pole", price: 500 },
-  { item: "Head torch", price: 300 },
-  { item: "Woollen cap", price: 300 },
-  { item: "Woollen socks", price: 250 },
-  { item: "Poncho", price: 250 },
-];
-
-export const inr = (n: number) => `₹${n.toLocaleString("en-IN")}`;
-export const getFeatured = (slug: string) => FEATURED.find((t) => t.slug === slug);
-export const ALL_TREK_NAMES = [...FEATURED.map((t) => t.name), ...OTHERS.map((t) => t.name)];
