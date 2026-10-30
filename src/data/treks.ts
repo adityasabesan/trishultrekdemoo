@@ -100,7 +100,7 @@ export const FEATURED: FeaturedTrek[] = [
     duration: "4 days / 3 nights",
     tagline: "High meadows above Raithal",
     difficulty: "Easy–Moderate",
-    highlights: ["Wide alpine meadows of Dayara", "Bakaria Top ridge", "Starts from Raithal village", "A short trek for first-timers"],
+    highlights: ["Wide alpine meadows of Dayara", "Bakaria Top ridge", "Starts from Raithal village", "A short four-day trek"],
     summary:
       "A short trek from Raithal village to the wide alpine meadows of Dayara and Bakaria Top — grassland in summer, snowfields in winter.",
     season: "Ask us for current conditions",
