@@ -209,7 +209,7 @@ function Home() {
           <div className="grid grid-cols-3 gap-4 md:gap-6">
             {[
               { img: sildar.url, name: "Sildar Singh Rawat", role: "Founder" },
-              { img: shishpal.url, name: "Shishpal Rana", role: "Co-founder" },
+              { img: shishpal.url, name: "Shishpal Rana", role: "Founder" },
               { img: vivesh.url, name: "Vivesh Rawat", role: "Co-founder" },
             ].map((f) => (
               <Reveal key={f.name}>

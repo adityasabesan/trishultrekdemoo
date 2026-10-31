@@ -14,14 +14,14 @@ export const NAV = [
 
 export const SAFETY_NOTICE = "Smoking, cigarettes, and alcohol are prohibited on treks.";
 
-/** Cream navigation bar — always ivory, never dark green. */
+/** Deep forest-green navigation bar with ivory text. */
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   return (
-    <header className="sticky top-0 z-40 border-b border-border/70 bg-background/95 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-forest-foreground/10 bg-forest text-forest-foreground shadow-sm">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 md:px-10">
         <Link to="/" className="flex items-center gap-3" aria-label="Trishul Treks home" onClick={() => setOpen(false)}>
-          <img src={logo.url} alt="Trishul Treks logo" className="h-11 w-11 rounded-full bg-ivory object-contain" />
+          <img src={logo.url} alt="Trishul Treks logo" className="h-11 w-11 rounded-full bg-ivory object-contain ring-2 ring-forest-foreground/20" />
           <span className="font-display text-xl tracking-tight">Trishul Treks</span>
         </Link>
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Main">
@@ -30,33 +30,33 @@ export function SiteHeader() {
               key={n.to}
               to={n.to}
               activeOptions={{ exact: n.to === "/" }}
-              className="eyebrow relative py-1 text-foreground/70 transition hover:text-foreground data-[status=active]:text-primary after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:bg-ochre after:transition data-[status=active]:after:scale-x-100 hover:after:scale-x-100"
+              className="eyebrow relative py-1 text-forest-foreground/75 transition hover:text-forest-foreground data-[status=active]:text-ochre after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:bg-ochre after:transition data-[status=active]:after:scale-x-100 hover:after:scale-x-100"
             >
               {n.label}
             </Link>
           ))}
-          <a href={waLink()} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-sm bg-primary px-4 py-2.5 text-xs font-semibold text-primary-foreground transition hover:bg-forest">
+          <a href={waLink()} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-sm bg-ochre px-4 py-2.5 text-xs font-semibold text-forest transition hover:brightness-110">
             <MessageCircle size={14} /> Enquire
           </a>
         </nav>
-        <button className="p-2 lg:hidden" onClick={() => setOpen(!open)} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open}>
+        <button className="p-2 text-forest-foreground lg:hidden" onClick={() => setOpen(!open)} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open}>
           {open ? <X /> : <Menu />}
         </button>
       </div>
       {open && (
-        <nav className="border-t bg-background px-5 pb-6 pt-2 lg:hidden" aria-label="Mobile">
+        <nav className="border-t border-forest-foreground/15 bg-forest px-5 pb-6 pt-2 lg:hidden" aria-label="Mobile">
           {NAV.map((n) => (
             <Link
               key={n.to}
               to={n.to}
               activeOptions={{ exact: n.to === "/" }}
               onClick={() => setOpen(false)}
-              className="block border-b py-3.5 font-display text-2xl data-[status=active]:text-primary"
+              className="block border-b border-forest-foreground/15 py-3.5 font-display text-2xl transition hover:text-ochre data-[status=active]:text-ochre"
             >
               {n.label}
             </Link>
           ))}
-          <a href={waLink()} target="_blank" rel="noreferrer" className="mt-5 flex items-center justify-center gap-2 rounded-sm bg-primary py-3.5 text-sm font-semibold text-primary-foreground">
+          <a href={waLink()} target="_blank" rel="noreferrer" className="mt-5 flex items-center justify-center gap-2 rounded-sm bg-ochre py-3.5 text-sm font-semibold text-forest">
             <MessageCircle size={16} /> Enquire on WhatsApp
           </a>
         </nav>

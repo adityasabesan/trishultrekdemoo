@@ -446,7 +446,7 @@ const R = (slug: string, item: string, price: number, description: string, capti
 });
 
 export const RENTALS: Rental[] = [
-  R("jacket", "Trekking Jacket", 500, "A warm outer layer for cold mornings, camps and summit pushes.", "A hiker in a hooded jacket looking over a forested valley"),
+  R("jacket", "Trekking Jacket", 500, "A warm outer layer for cold mornings, camps and summit pushes.", "A dark softshell trekking jacket with zipped chest pocket"),
   R("shoes", "Trekking Shoes", 500, "Ankle-support trekking footwear for rocky, muddy and snowy trails.", "A pair of high-ankle trekking boots"),
   R("pole", "Trekking Pole", 500, "Adds balance on steep climbs and takes load off your knees on descents.", "A pair of collapsible trekking poles"),
   R("torch", "Head Torch", 300, "Hands-free light for early summit starts and evenings at camp.", "An LED head torch"),

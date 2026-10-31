@@ -12,7 +12,7 @@ export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
       { title: "About Trishul Treks — Our Story and Team in Sankri" },
-      { name: "description", content: "Meet the Sankri-based team behind Trishul Treks: founder Sildar Singh Rawat and co-founders Shishpal Rana and Vivesh Rawat." },
+      { name: "description", content: "Meet the Sankri-based team behind Trishul Treks: founders Shishpal Rana and Sildar Singh Rawat, and co-founder Vivesh Rawat." },
       { property: "og:title", content: "About Trishul Treks" },
       { property: "og:description", content: "The local team behind Trishul Treks, based in Sankri, Uttarakhand." },
       { property: "og:type", content: "website" },
@@ -63,7 +63,7 @@ function About() {
                 Sildar Singh Rawat founded Trishul Treks in Sankri, the village at the foot of Kedarkantha and the gateway to the Har Ki Dun and Ruinsara valleys.
               </p>
               <p>
-                He leads the company and works alongside co-founders Shishpal Rana and Vivesh Rawat to plan routes, organise groups and look after guests from the first message to the drive home.
+                He works alongside founder Shishpal Rana and co-founder Vivesh Rawat to plan routes, organise groups and look after guests from the first message to the drive home.
               </p>
             </div>
             <a href={waLink()} target="_blank" rel="noreferrer" className="mt-8 inline-flex items-center gap-2 rounded-sm bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition hover:bg-forest">
@@ -73,22 +73,22 @@ function About() {
         </div>
       </section>
 
-      {/* Co-founders */}
+      {/* Team */}
       <section className="mx-auto max-w-7xl px-5 py-20 md:px-10 md:py-28">
         <Reveal>
-          <p className="eyebrow text-primary">Co-founders</p>
+          <p className="eyebrow text-primary">The team</p>
           <h2 className="mt-3 text-4xl md:text-5xl">Running the trails together.</h2>
         </Reveal>
         <div className="mt-12 grid gap-10 sm:grid-cols-2">
           {[
-            { img: shishpal.url, name: "Shishpal Rana", text: "Co-founder of Trishul Treks, part of the Sankri team that plans and runs our treks." },
-            { img: vivesh.url, name: "Vivesh Rawat", text: "Co-founder of Trishul Treks, part of the Sankri team that plans and runs our treks." },
+            { img: shishpal.url, name: "Shishpal Rana", role: "Founder", text: "Founder of Trishul Treks, part of the Sankri team that plans and runs our treks." },
+            { img: vivesh.url, name: "Vivesh Rawat", role: "Co-founder", text: "Co-founder of Trishul Treks, part of the Sankri team that plans and runs our treks." },
           ].map((f) => (
             <Reveal key={f.name}>
               <figure className="grid grid-cols-[0.8fr_1fr] gap-6">
-                <img src={f.img} alt={`${f.name}, Co-founder of Trishul Treks`} loading="lazy" className="aspect-[3/4] w-full object-cover" />
+                <img src={f.img} alt={`${f.name}, ${f.role} of Trishul Treks`} loading="lazy" className="aspect-[3/4] w-full object-cover" />
                 <figcaption className="self-end">
-                  <p className="eyebrow text-muted-foreground">Co-founder</p>
+                  <p className="eyebrow text-muted-foreground">{f.role}</p>
                   <p className="mt-2 font-display text-3xl">{f.name}</p>
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{f.text}</p>
                 </figcaption>
