@@ -25,7 +25,7 @@ function Treks() {
       <section className="mx-auto max-w-7xl px-5 pb-10 pt-16 md:px-10 md:pt-24">
         <p className="eyebrow text-primary">The catalogue</p>
         <h1 className="mt-3 text-5xl md:text-7xl">28 treks across the Himalaya.</h1>
-        <p className="mt-5 max-w-xl text-muted-foreground">Six signature routes with full packages and itineraries, and 22 more we can arrange on request.</p>
+        <p className="mt-5 max-w-xl text-muted-foreground">Six signature routes with Standard and Premium packages, plus 22 more classic Garhwal treks — each with its own itinerary.</p>
       </section>
 
       <section className="mx-auto max-w-7xl px-5 py-10 md:px-10">
@@ -46,18 +46,21 @@ function Treks() {
       </section>
 
       <section className="mx-auto max-w-7xl px-5 py-16 md:px-10">
-        <h2 className="text-3xl">More treks, on request</h2>
-        <p className="mt-2 text-sm text-muted-foreground">Seasons are indicative. Message us for dates, prices and itineraries.</p>
+        <h2 className="text-3xl">More Himalayan treks</h2>
+        
         <div className="mt-8 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
           {OTHERS.map((t) => (
             <article key={t.slug}>
-              <div className="overflow-hidden">
-                <img src={t.photo.src} alt={t.photo.alt} loading="lazy" className="aspect-[4/3] w-full object-cover" />
-              </div>
-              <h3 className="mt-4 text-2xl">{t.name}</h3>
+              <Link to="/treks/$slug" params={{ slug: t.slug }} className="group block">
+                <div className="overflow-hidden">
+                  <img src={t.photo.src} alt={t.photo.alt} loading="lazy" className="aspect-[4/3] w-full object-cover transition duration-700 group-hover:scale-105" />
+                </div>
+                <h3 className="mt-4 text-2xl">{t.name}</h3>
+              </Link>
               <dl className="mt-2 grid grid-cols-2 gap-y-1 text-sm">
                 <dt className="text-muted-foreground">Altitude</dt><dd>{t.altitude ?? "Ask us"}</dd>
                 <dt className="text-muted-foreground">Difficulty</dt><dd>{t.difficulty}</dd>
+                <dt className="text-muted-foreground">Duration</dt><dd>{t.duration}</dd>
                 <dt className="text-muted-foreground">Season</dt><dd>{t.season}</dd>
               </dl>
               <a href={waLink(`Hello Trishul Treks, I'd like details for the ${t.name} trek.`)} target="_blank" rel="noreferrer" className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-primary">

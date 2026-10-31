@@ -2,16 +2,28 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { Check, AlertTriangle } from "lucide-react";
 import { SiteHeader, SiteFooter } from "@/components/site/Chrome";
 import { EnquiryForm } from "@/components/site/EnquiryForm";
-import { getFeatured, inr } from "@/data/treks";
+import { getFeatured, getOther, inr, type OtherTrek } from "@/data/treks";
 import { waLink } from "@/data/site";
 
 export const Route = createFileRoute("/treks/$slug")({
   loader: ({ params }) => {
     const trek = getFeatured(params.slug);
-    if (!trek) throw notFound();
-    return { trek };
+    if (trek) return { trek, other: null };
+    const other = getOther(params.slug);
+    if (!other) throw notFound();
+    return { trek: null, other };
   },
   head: ({ loaderData }) => {
+    const o = loaderData?.other;
+    if (o) {
+      const title = `${o.name} Trek (${o.duration}) — Trishul Treks`;
+      return { meta: [
+        { title }, { name: "description", content: o.summary },
+        { property: "og:title", content: title }, { property: "og:description", content: o.summary },
+        { property: "og:type", content: "article" }, { name: "twitter:card", content: "summary_large_image" },
+        { property: "og:image", content: o.photo.src }, { name: "twitter:image", content: o.photo.src },
+      ] };
+    }
     const t = loaderData?.trek;
     if (!t) return { meta: [{ title: "Trek not found — Trishul Treks" }, { name: "robots", content: "noindex" }] };
     const title = `${t.name} Trek (${t.altitude}, ${t.duration}) — Trishul Treks`;
@@ -38,7 +50,62 @@ export const Route = createFileRoute("/treks/$slug")({
 });
 
 function TrekPage() {
-  const { trek: t } = Route.useLoaderData();
+  const { trek, other } = Route.useLoaderData();
+  if (other) return <OtherPage t={other} />;
+  return <FeaturedPage t={trek!} />;
+}
+
+function OtherPage({ t }: { t: OtherTrek }) {
+  return (
+    <div>
+      <section className="relative min-h-[70vh] overflow-hidden">
+        <img src={t.photo.src} alt={t.photo.alt} className="absolute inset-0 h-full w-full object-cover" />
+        <div className="hero-scrim absolute inset-0" />
+        <SiteHeader />
+        <div className="relative z-10 mx-auto flex min-h-[70vh] max-w-7xl flex-col justify-end px-5 pb-16 text-forest-foreground md:px-10">
+          <Link to="/treks" className="eyebrow text-ochre">← All treks</Link>
+          <h1 className="rise mt-4 text-6xl md:text-8xl">{t.name}</h1>
+          <div className="mt-8 flex flex-wrap gap-x-10 gap-y-3">
+            {[["Altitude", t.altitude ?? "Ask us"], ["Duration", t.duration], ["Difficulty", t.difficulty], ["Best time", t.season]].map(([k, v]) => (
+              <div key={k}><p className="eyebrow opacity-70">{k}</p><p className="font-display text-xl">{v}</p></div>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className="mx-auto grid max-w-7xl gap-14 px-5 py-20 md:grid-cols-2 md:px-10">
+        <p className="font-display text-2xl leading-snug md:text-3xl">{t.summary}</p>
+        <div>
+          <p className="eyebrow text-primary">Itinerary</p>
+          <ol className="mt-6">
+            {t.itinerary.map((d) => (
+              <li key={d.day} className="grid grid-cols-[4rem_1fr] border-b py-4">
+                <span className="font-display text-2xl text-ochre">D{d.day}</span>
+                <p className="font-semibold">{d.title}</p>
+              </li>
+            ))}
+          </ol>
+          <a href={waLink(`Hello Trishul Treks, I'm interested in the ${t.name} Trek. Please share the available dates, package details, and booking information.`)} target="_blank" rel="noreferrer" className="mt-8 inline-flex rounded-sm bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-forest">
+            Enquire on WhatsApp
+          </a>
+        </div>
+      </section>
+      <section className="bg-forest text-forest-foreground">
+        <div className="mx-auto max-w-3xl px-5 py-20 md:px-10">
+          <h2 className="text-4xl md:text-5xl">Plan your {t.name} trek</h2>
+          <div className="mt-10 rounded-sm bg-background p-6 text-foreground md:p-10">
+            <EnquiryForm type="Trek" item={t.name} />
+          </div>
+        </div>
+      </section>
+      <section className="mx-auto max-w-7xl px-5 py-6 text-[11px] text-muted-foreground md:px-10">
+        Photo: <a href={t.photo.page} target="_blank" rel="noreferrer" className="underline">{t.photo.credit}</a> ({t.photo.license}), via Wikimedia Commons.
+      </section>
+      <SiteFooter />
+    </div>
+  );
+}
+
+function FeaturedPage({ t }: { t: NonNullable<ReturnType<typeof getFeatured>> }) {
   const [hero, ...rest] = t.photos;
   return (
     <div>
