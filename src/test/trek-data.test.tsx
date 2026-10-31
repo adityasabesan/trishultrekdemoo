@@ -20,7 +20,7 @@ describe("trek catalogue", () => {
     expect(getFeatured("bali-pass")!.packages.map((p) => p.price)).toEqual([22500, 32500]);
   });
   it("keeps rental prices", () => {
-    expect(RENTALS.find((r) => r.item === "Head torch")!.price).toBe(300);
+    expect(RENTALS.find((r) => r.item === "Head Torch")!.price).toBe(300);
     expect(RENTALS.find((r) => r.item === "Poncho")!.price).toBe(250);
   });
   it("does not invent an altitude for Sadhara Pani", () => {
