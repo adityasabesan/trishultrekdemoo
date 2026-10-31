@@ -18,7 +18,7 @@ export function BackToTreks() {
           router.history.back();
         }
       }}
-      className="inline-flex w-fit items-center gap-2 rounded-sm border border-forest-foreground/40 bg-forest/70 px-4 py-2.5 text-sm font-semibold text-forest-foreground backdrop-blur transition hover:bg-forest"
+      className="mb-auto inline-flex w-fit items-center gap-2 rounded-sm border border-forest-foreground/40 bg-forest/70 px-4 py-2.5 text-sm font-semibold text-forest-foreground backdrop-blur transition hover:bg-forest"
     >
       ← Back to Treks
     </Link>
