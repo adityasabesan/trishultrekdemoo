@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { SiteHeader, SiteFooter } from "@/components/site/Chrome";
 import { FEATURED, OTHERS, inr } from "@/data/treks";
 import { waLink } from "@/data/site";
+import { markFromTreks } from "@/components/site/BackToTreks";
 
 export const Route = createFileRoute("/treks/")({
   head: () => ({
@@ -32,7 +33,7 @@ function Treks() {
         <h2 className="text-3xl">Signature treks</h2>
         <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {FEATURED.map((t) => (
-            <Link key={t.slug} to="/treks/$slug" params={{ slug: t.slug }} className="group relative block aspect-[4/5] overflow-hidden">
+            <Link key={t.slug} onClick={markFromTreks} to="/treks/$slug" params={{ slug: t.slug }} className="group relative block aspect-[4/5] overflow-hidden">
               <img src={t.photos[0].src} alt={t.photos[0].alt} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105" />
               <div className="card-scrim absolute inset-0" />
               <div className="absolute inset-x-0 bottom-0 p-6 text-forest-foreground">
@@ -51,7 +52,7 @@ function Treks() {
         <div className="mt-8 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
           {OTHERS.map((t) => (
             <article key={t.slug}>
-              <Link to="/treks/$slug" params={{ slug: t.slug }} className="group block">
+              <Link to="/treks/$slug" onClick={markFromTreks} params={{ slug: t.slug }} className="group block">
                 <div className="overflow-hidden">
                   <img src={t.photo.src} alt={t.photo.alt} loading="lazy" className="aspect-[4/3] w-full object-cover transition duration-700 group-hover:scale-105" />
                 </div>

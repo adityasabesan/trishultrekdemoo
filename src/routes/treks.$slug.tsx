@@ -4,6 +4,7 @@ import { SiteHeader, SiteFooter } from "@/components/site/Chrome";
 import { EnquiryForm } from "@/components/site/EnquiryForm";
 import { getFeatured, getOther, inr, type OtherTrek } from "@/data/treks";
 import { waLink } from "@/data/site";
+import { BackToTreks } from "@/components/site/BackToTreks";
 
 export const Route = createFileRoute("/treks/$slug")({
   loader: ({ params }) => {
@@ -62,8 +63,8 @@ function OtherPage({ t }: { t: OtherTrek }) {
         <img src={t.photo.src} alt={t.photo.alt} className="absolute inset-0 h-full w-full object-cover" />
         <div className="hero-scrim absolute inset-0" />
         <SiteHeader />
-        <div className="relative z-10 mx-auto flex min-h-[70vh] max-w-7xl flex-col justify-end px-5 pb-16 text-forest-foreground md:px-10">
-          <Link to="/treks" className="eyebrow text-ochre">← All treks</Link>
+        <div className="relative z-10 mx-auto flex min-h-[70vh] max-w-7xl flex-col justify-end px-5 pb-16 pt-8 text-forest-foreground md:px-10">
+          <BackToTreks />
           <h1 className="rise mt-4 text-6xl md:text-8xl">{t.name}</h1>
           <div className="mt-8 flex flex-wrap gap-x-10 gap-y-3">
             {[["Altitude", t.altitude ?? "Ask us"], ["Duration", t.duration], ["Difficulty", t.difficulty], ["Best time", t.season]].map(([k, v]) => (
@@ -113,8 +114,8 @@ function FeaturedPage({ t }: { t: NonNullable<ReturnType<typeof getFeatured>> })
         <img src={hero.src} alt={hero.alt} className="absolute inset-0 h-full w-full object-cover" />
         <div className="hero-scrim absolute inset-0" />
         <SiteHeader />
-        <div className="relative z-10 mx-auto flex min-h-[80vh] max-w-7xl flex-col justify-end px-5 pb-16 text-forest-foreground md:px-10">
-          <Link to="/treks" className="eyebrow text-ochre">← All treks</Link>
+        <div className="relative z-10 mx-auto flex min-h-[80vh] max-w-7xl flex-col justify-end px-5 pb-16 pt-8 text-forest-foreground md:px-10">
+          <BackToTreks />
           <h1 className="rise mt-4 text-6xl md:text-8xl">{t.name}</h1>
           <p className="rise mt-3 text-xl opacity-85">{t.tagline}</p>
           <div className="mt-8 flex flex-wrap gap-x-10 gap-y-3">
