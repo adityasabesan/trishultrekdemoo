@@ -1,4 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { useEffect } from "react";
 import { Check, AlertTriangle } from "lucide-react";
 import { SiteHeader, SiteFooter } from "@/components/site/Chrome";
 import { EnquiryForm } from "@/components/site/EnquiryForm";
@@ -52,6 +53,11 @@ export const Route = createFileRoute("/treks/$slug")({
 
 function TrekPage() {
   const { trek, other } = Route.useLoaderData();
+  const slug = trek?.slug ?? other?.slug;
+  // Always open a trek page at the top, even when arriving from a scrolled list.
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
   if (other) return <OtherPage t={other} />;
   return <FeaturedPage t={trek!} />;
 }
