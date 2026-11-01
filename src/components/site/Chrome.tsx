@@ -61,6 +61,7 @@ export function SiteHeader() {
           </a>
         </nav>
       )}
+      <div className="h-px bg-gradient-to-r from-transparent via-ochre/50 to-transparent" aria-hidden="true" />
     </header>
   );
 }
