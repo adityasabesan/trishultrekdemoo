@@ -53,17 +53,17 @@ function About() {
       <section className="border-y bg-card">
         <div className="mx-auto grid max-w-7xl gap-12 px-5 py-20 md:grid-cols-[1fr_1.2fr] md:px-10 md:py-28">
           <Reveal>
-            <img src={sildar.url} alt="Sildar Singh Rawat, Founder of Trishul Treks" className="aspect-[4/5] w-full object-cover" />
+            <img src={shishpal.url} alt="Shishpal Rana, Founder of Trishul Treks" className="aspect-[4/5] w-full object-cover" />
           </Reveal>
           <Reveal className="self-center">
             <p className="eyebrow text-primary">Founder</p>
-            <h2 className="mt-3 text-5xl md:text-6xl">Sildar Singh Rawat</h2>
+            <h2 className="mt-3 text-5xl md:text-6xl">Shishpal Rana</h2>
             <div className="mt-6 space-y-4 text-lg leading-relaxed text-muted-foreground">
               <p>
-                Sildar Singh Rawat founded Trishul Treks in Sankri, the village at the foot of Kedarkantha and the gateway to the Har Ki Dun and Ruinsara valleys.
+                Shishpal Rana founded Trishul Treks in Sankri, the village at the foot of Kedarkantha and the gateway to the Har Ki Dun and Ruinsara valleys.
               </p>
               <p>
-                He works alongside founder Shishpal Rana and co-founder Vivesh Rawat to plan routes, organise groups and look after guests from the first message to the drive home.
+                He works alongside founder Sildar Singh Rawat and co-founder Vivesh Rawat to plan routes, organise groups and look after guests from the first message to the drive home.
               </p>
             </div>
             <a href={waLink()} target="_blank" rel="noreferrer" className="mt-8 inline-flex items-center gap-2 rounded-sm bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition hover:bg-forest">
@@ -81,7 +81,7 @@ function About() {
         </Reveal>
         <div className="mt-12 grid gap-10 sm:grid-cols-2">
           {[
-            { img: shishpal.url, name: "Shishpal Rana", role: "Founder", text: "Founder of Trishul Treks, part of the Sankri team that plans and runs our treks." },
+            { img: sildar.url, name: "Sildar Singh Rawat", role: "Founder", text: "Founder of Trishul Treks, part of the Sankri team that plans and runs our treks." },
             { img: vivesh.url, name: "Vivesh Rawat", role: "Co-founder", text: "Co-founder of Trishul Treks, part of the Sankri team that plans and runs our treks." },
           ].map((f) => (
             <Reveal key={f.name}>
