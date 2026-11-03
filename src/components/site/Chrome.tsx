@@ -18,7 +18,7 @@ export const SAFETY_NOTICE = "Smoking, cigarettes, and alcohol are prohibited on
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   return (
-    <header className="sticky top-0 z-40 bg-forest text-forest-foreground shadow-[0_12px_32px_-14px_color-mix(in_oklab,var(--scrim)_70%,transparent)]">
+    <header className="sticky top-0 z-40 bg-forest/85 text-forest-foreground shadow-[0_12px_32px_-14px_color-mix(in_oklab,var(--scrim)_70%,transparent)] backdrop-blur-xl backdrop-saturate-150 supports-[backdrop-filter]:bg-forest/70">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 md:px-10">
         <Link to="/" className="flex items-center gap-3" aria-label="Trishul Treks home" onClick={() => setOpen(false)}>
           <img src={logo.url} alt="Trishul Treks logo" className="h-11 w-11 rounded-full bg-ivory object-contain ring-2 ring-forest-foreground/20" />
@@ -44,7 +44,7 @@ export function SiteHeader() {
         </button>
       </div>
       {open && (
-        <nav className="border-t border-forest-foreground/15 bg-forest px-5 pb-6 pt-2 lg:hidden" aria-label="Mobile">
+        <nav className="border-t border-forest-foreground/15 bg-forest/90 px-5 pb-6 pt-2 backdrop-blur-xl backdrop-saturate-150 lg:hidden" aria-label="Mobile">
           {NAV.map((n) => (
             <Link
               key={n.to}
