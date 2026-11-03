@@ -65,9 +65,9 @@ function Home() {
       <section className="relative min-h-[calc(100svh-4.3rem)] overflow-hidden">
         <img src={HERO.src} alt={HERO.alt} className="absolute inset-0 h-full w-full object-cover object-[50%_40%]" fetchPriority="high" />
         <div className="hero-scrim absolute inset-0" />
-        <div className="relative z-10 mx-auto flex min-h-[calc(100svh-4.3rem)] max-w-7xl flex-col justify-end px-5 pb-16 text-forest-foreground md:px-10 md:pb-20">
+        <div className="relative z-10 mx-auto flex min-h-[calc(100svh-4.3rem)] max-w-7xl flex-col justify-end px-5 pb-16 pt-40 text-forest-foreground md:px-10 md:pb-20 md:pt-0">
           <p className="eyebrow rise text-ochre">Sankri · Uttarakhand Himalaya</p>
-          <h1 className="rise mt-4 max-w-4xl text-5xl leading-[0.98] md:text-8xl">Walk the high Himalaya with people who live here.</h1>
+          <h1 className="rise mt-4 max-w-4xl text-5xl leading-[0.98] md:mt-4 md:text-8xl">Walk the high Himalaya with people who live here.</h1>
           <div className="rise mt-6 max-w-2xl opacity-90">
             <QuoteRotator quotes={QUOTES} />
           </div>
