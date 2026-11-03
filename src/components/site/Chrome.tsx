@@ -18,7 +18,7 @@ export const SAFETY_NOTICE = "Smoking, cigarettes, and alcohol are prohibited on
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   return (
-    <header className="sticky top-0 z-40 bg-forest/95 text-forest-foreground shadow-[0_10px_28px_-16px_color-mix(in_oklab,var(--scrim)_80%,transparent)] backdrop-blur-md supports-[backdrop-filter]:bg-forest/90">
+    <header className="sticky top-0 z-40 bg-forest text-forest-foreground shadow-[0_10px_28px_-16px_color-mix(in_oklab,var(--scrim)_80%,transparent)] backdrop-blur-md supports-[backdrop-filter]:bg-forest/95">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 md:px-10">
         <Link to="/" className="flex items-center gap-3" aria-label="Trishul Treks home" onClick={() => setOpen(false)}>
           <img src={logo.url} alt="Trishul Treks logo" className="h-11 w-11 rounded-full bg-ivory object-contain ring-2 ring-forest-foreground/20" />
