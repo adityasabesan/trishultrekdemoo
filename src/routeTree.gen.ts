@@ -15,6 +15,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as RentalsRouteImport } from './routes/rentals'
 import { Route as TreksIndexRouteImport } from './routes/treks.index'
 import { Route as TreksSlugRouteImport } from './routes/treks.$slug'
+import { Route as YatrasSlugRouteImport } from './routes/yatras.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -46,6 +47,11 @@ const TreksSlugRoute = TreksSlugRouteImport.update({
   path: '/treks/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const YatrasSlugRoute = YatrasSlugRouteImport.update({
+  id: '/yatras/$slug',
+  path: '/yatras/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -53,6 +59,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/rentals': typeof RentalsRoute
   '/treks/$slug': typeof TreksSlugRoute
+  '/yatras/$slug': typeof YatrasSlugRoute
   '/treks/': typeof TreksIndexRoute
 }
 export interface FileRoutesByTo {
@@ -61,6 +68,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/rentals': typeof RentalsRoute
   '/treks/$slug': typeof TreksSlugRoute
+  '/yatras/$slug': typeof YatrasSlugRoute
   '/treks': typeof TreksIndexRoute
 }
 export interface FileRoutesById {
@@ -70,14 +78,28 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/rentals': typeof RentalsRoute
   '/treks/$slug': typeof TreksSlugRoute
+  '/yatras/$slug': typeof YatrasSlugRoute
   '/treks/': typeof TreksIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/about' | '/contact' | '/rentals' | '/treks/$slug' | '/treks/'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/rentals'
+    | '/treks/$slug'
+    | '/yatras/$slug'
+    | '/treks/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/contact' | '/rentals' | '/treks/$slug' | '/treks'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/rentals'
+    | '/treks/$slug'
+    | '/yatras/$slug'
+    | '/treks'
   id:
     | '__root__'
     | '/'
@@ -85,6 +107,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/rentals'
     | '/treks/$slug'
+    | '/yatras/$slug'
     | '/treks/'
   fileRoutesById: FileRoutesById
 }
@@ -94,6 +117,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   RentalsRoute: typeof RentalsRoute
   TreksSlugRoute: typeof TreksSlugRoute
+  YatrasSlugRoute: typeof YatrasSlugRoute
   TreksIndexRoute: typeof TreksIndexRoute
 }
 
@@ -141,6 +165,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TreksSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/yatras/$slug': {
+      id: '/yatras/$slug'
+      path: '/yatras/$slug'
+      fullPath: '/yatras/$slug'
+      preLoaderRoute: typeof YatrasSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -150,6 +181,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   RentalsRoute: RentalsRoute,
   TreksSlugRoute: TreksSlugRoute,
+  YatrasSlugRoute: YatrasSlugRoute,
   TreksIndexRoute: TreksIndexRoute,
 }
 export const routeTree = rootRouteImport
