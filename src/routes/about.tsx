@@ -38,7 +38,7 @@ function About() {
         <Reveal className="space-y-5 self-center text-lg leading-relaxed text-muted-foreground">
           <p className="eyebrow text-primary">Our story</p>
           <p>
-            We organise guided treks across the Garhwal Himalaya and into Himachal — 28 routes in all, from first-timer favourites like Kedarkantha and Dayara Bugyal to demanding high crossings like Bali Pass and Rupin Pass.
+            We organise guided treks across the Garhwal Himalaya and into Himachal, from first-timer favourites like Kedarkantha and Dayara Bugyal to demanding high crossings like Bali Pass and Rupin Pass.
           </p>
           <p>
             Alongside treks we arrange pilgrimage journeys to the Char Dham shrines, Kedarnath, Badrinath and Hemkund Sahib, and rent out trekking equipment so you don't need to buy everything before you come.

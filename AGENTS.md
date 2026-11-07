@@ -12,3 +12,4 @@
 ## Project rules
 - Trek, package, rental and photo data live in `src/data/` (treks.ts, photos.json); contact details in `src/data/site.ts` — pages read only from these so content can be updated in one place.
 - Enquiries are sent by opening WhatsApp/email with a pre-filled message (no backend) — keeps the site static-hostable.
+- New standalone yatras live in `src/data/yatras.ts` and use `/yatras/$slug`; the shared homepage catalogue combines them with the unchanged trek records so new offerings do not overwrite legacy packages.

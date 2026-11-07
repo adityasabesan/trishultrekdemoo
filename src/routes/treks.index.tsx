@@ -8,9 +8,9 @@ import { markFromTreks } from "@/components/site/BackToTreks";
 export const Route = createFileRoute("/treks/")({
   head: () => ({
     meta: [
-      { title: "All 28 Himalayan Treks — Trishul Treks" },
-      { name: "description", content: "Kedarkantha, Dayara Bugyal, Kuari Pass, Har Ki Dun, Bali Pass, Rupin Pass and 22 more treks in the Garhwal Himalaya." },
-      { property: "og:title", content: "All 28 Himalayan Treks — Trishul Treks" },
+      { title: "Himalayan Trek Catalogue — Trishul Treks" },
+      { name: "description", content: "Explore Kedarkantha, Dayara Bugyal, Kuari Pass, Har Ki Dun, Bali Pass, Rupin Pass and more Himalayan routes." },
+      { property: "og:title", content: "Himalayan Trek Catalogue — Trishul Treks" },
       { property: "og:description", content: "Browse every trek we run, with altitude, difficulty and season." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -25,8 +25,8 @@ function Treks() {
       <SiteHeader />
       <section className="mx-auto max-w-7xl px-5 pb-10 pt-16 md:px-10 md:pt-24">
         <p className="eyebrow text-primary">The catalogue</p>
-        <h1 className="mt-3 text-5xl md:text-7xl">28 treks across the Himalaya.</h1>
-        <p className="mt-5 max-w-xl text-muted-foreground">Six signature routes with Standard and Premium packages, plus 22 more classic Garhwal treks — each with its own itinerary.</p>
+        <h1 className="mt-3 text-5xl md:text-7xl">Treks across the Himalaya.</h1>
+        <p className="mt-5 max-w-xl text-muted-foreground">Signature routes with Standard and Premium packages, plus classic Garhwal treks — each with its own itinerary.</p>
       </section>
 
       <section className="mx-auto max-w-7xl px-5 py-10 md:px-10">

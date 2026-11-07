@@ -11,6 +11,12 @@ export const SITE = {
   pickup: "Prince Chowk, Dehradun",
 };
 
+// Company figures explicitly confirmed by the client.
+export const HOME_STATS = [
+  { value: "5K+", label: "Trekkers" },
+  { value: "100+", label: "Trips Completed" },
+] as const;
+
 export const telLink = `tel:${SITE.phoneE164}`;
 export const mailLink = (subject = "Trek enquiry", body = "") =>
   `mailto:${SITE.email}?subject=${encodeURIComponent(subject)}${body ? `&body=${encodeURIComponent(body)}` : ""}`;
