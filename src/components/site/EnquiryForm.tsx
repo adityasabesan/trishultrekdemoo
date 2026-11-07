@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { z } from "zod";
 import { ALL_TREK_NAMES, PILGRIMAGES, RENTALS } from "@/data/treks";
+import { YATRAS } from "@/data/yatras";
 import { mailLink, waLink } from "@/data/site";
 
 export const ENQUIRY_TYPES = ["Trek", "Rental", "Pilgrimage Package", "General Enquiry"] as const;
@@ -9,7 +10,7 @@ export type EnquiryType = (typeof ENQUIRY_TYPES)[number];
 const ITEMS: Record<EnquiryType, string[]> = {
   Trek: ALL_TREK_NAMES,
   Rental: RENTALS.map((r) => r.item),
-  "Pilgrimage Package": PILGRIMAGES.map((p) => p.name),
+  "Pilgrimage Package": [...PILGRIMAGES, ...YATRAS].map((p) => p.name),
   "General Enquiry": [],
 };
 
