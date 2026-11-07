@@ -3,8 +3,9 @@ import { useState } from "react";
 import { ArrowRight, MessageCircle, ShieldCheck, MapPin, Users, Leaf, Expand } from "lucide-react";
 import { SiteHeader, SiteFooter } from "@/components/site/Chrome";
 import { Reveal, QuoteRotator, Lightbox, type GalleryImage } from "@/components/site/Interactive";
-import { FEATURED, RENTALS, inr, trekMsg } from "@/data/treks";
-import { waLink, mailLink } from "@/data/site";
+import { FEATURED, RENTALS, inr } from "@/data/treks";
+import { HOME_CATALOGUE } from "@/data/catalogue";
+import { HOME_STATS, waLink, mailLink } from "@/data/site";
 import shishpal from "@/assets/Shishpal_Rana.jpeg.asset.json";
 import sildar from "@/assets/Singh_Rawat.jpeg.asset.json";
 import vivesh from "@/assets/Vivesh_Rawat.jpg.asset.json";
@@ -12,7 +13,9 @@ import summitGroup from "@/assets/Trek_everyone_image.jpeg.asset.json";
 import trailGroup from "@/assets/trek_ppl.jpeg.asset.json";
 import sunrise from "@/assets/summit-sunrise.jpeg.asset.json";
 
-const HERO = FEATURED[0]!.photos[0];
+const firstTrek = FEATURED[0];
+if (!firstTrek) throw new Error("The homepage requires the approved hero trek.");
+const HERO = firstTrek.photos[0];
 
 const QUOTES = [
   "The mountains are calling, and your next journey begins here.",
@@ -26,9 +29,9 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Trishul Treks — Guided Himalayan Treks from Sankri, Uttarakhand" },
-      { name: "description", content: "Kedarkantha, Har Ki Dun, Kuari Pass, Rupin Pass and 24 more Himalayan treks led by a local team from Sankri." },
+      { name: "description", content: "Explore Himalayan treks, winter summit expeditions and sacred yatras with the local Trishul Treks team from Sankri." },
       { property: "og:title", content: "Trishul Treks — Guided Himalayan Treks" },
-      { property: "og:description", content: "28 Himalayan treks, pilgrimage packages and equipment rentals, led by a local team from Sankri." },
+      { property: "og:description", content: "Himalayan treks, sacred yatras and equipment rentals, led by a local team from Sankri." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { property: "og:image", content: HERO.src },
@@ -67,13 +70,16 @@ function Home() {
         <div className="hero-scrim absolute inset-0" />
         <div className="relative z-10 mx-auto flex min-h-[calc(100svh-4.3rem)] max-w-7xl flex-col justify-end px-5 pb-16 pt-40 text-forest-foreground md:px-10 md:pb-20 md:pt-0">
           <p className="eyebrow rise text-ochre">Sankri · Uttarakhand Himalaya</p>
-          <h1 className="rise mt-4 max-w-4xl text-5xl leading-[0.98] md:mt-4 md:text-8xl">Walk the high Himalaya with people who live here.</h1>
+          <h1 className="rise mt-4 max-w-4xl text-5xl leading-[0.98] md:mt-4 md:text-8xl">Rooted in the Mountains. Driven by Adventure.</h1>
           <div className="rise mt-6 max-w-2xl opacity-90">
             <QuoteRotator quotes={QUOTES} />
           </div>
           <p className="rise mt-4 max-w-xl text-lg opacity-85">
-            Trishul Treks runs guided treks from Sankri — from snowy Kedarkantha to the high crossings of Rupin and Bali Pass.
+            We bring you closer to the Himalayas through unforgettable mountain treks, winter summit expeditions and sacred Himalayan pilgrimages, guided by people who call these mountains home.
           </p>
+          <dl className="rise mt-6 flex flex-wrap gap-x-10 gap-y-4">
+            {HOME_STATS.map((s) => <div key={s.label}><dt className="eyebrow text-ochre">{s.label}</dt><dd className="mt-1 font-display text-3xl">{s.value}</dd></div>)}
+          </dl>
           <div className="rise mt-9 flex flex-wrap gap-4">
             <Link to="/treks" className="inline-flex items-center gap-2 rounded-sm bg-ochre px-7 py-4 text-sm font-semibold text-accent-foreground transition hover:brightness-105">
               Explore treks <ArrowRight size={16} />
@@ -103,32 +109,24 @@ function Home() {
       {/* Featured */}
       <section className="border-t bg-card">
         <div className="mx-auto max-w-7xl px-5 py-20 md:px-10 md:py-28">
-          <Reveal><SectionHead eyebrow="Featured treks" title="Six routes we know by heart." /></Reveal>
-          <div className="mt-14 grid gap-x-8 gap-y-14 md:grid-cols-2 lg:grid-cols-3">
-            {FEATURED.map((t, i) => (
+          <Reveal>
+            <SectionHead eyebrow="Treks & yatras" title="Explore Our Treks & Yatras" />
+            <p className="mt-6 max-w-2xl text-lg text-muted-foreground">From beautiful Himalayan valleys and alpine meadows to challenging mountain crossings and sacred pilgrimages, discover journeys across the Himalayas.</p>
+          </Reveal>
+          <div data-testid="home-catalogue" className="mt-14 grid gap-x-8 gap-y-14 md:grid-cols-2 lg:grid-cols-3">
+            {HOME_CATALOGUE.map((t, i) => (
               <Reveal key={t.slug} className={i % 3 === 1 ? "lg:mt-16" : ""}>
-                <Link to="/treks/$slug" params={{ slug: t.slug }} className="group block">
+                <Link to={t.kind === "trek" ? "/treks/$slug" : "/yatras/$slug"} params={{ slug: t.slug }} className="group block">
                   <div className="overflow-hidden">
-                    <img src={t.photos[0].src} alt={t.photos[0].alt} loading="lazy" className="aspect-[4/5] w-full object-cover transition duration-700 group-hover:scale-105" />
+                    <img src={t.photo.src} alt={t.photo.alt} loading="lazy" className="aspect-[4/5] w-full object-cover transition duration-700 group-hover:scale-105" />
                   </div>
-                  <div className="mt-4 flex gap-4 text-muted-foreground">
-                    <span className="eyebrow">{t.altitude}</span>
-                    <span className="eyebrow">{t.duration}</span>
-                  </div>
-                  <h3 className="mt-2 text-3xl">{t.name}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{t.summary}</p>
-                  <p className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-primary">
-                    From {inr(Math.min(...t.packages.map((p) => p.price)))} per person <ArrowRight size={14} className="transition group-hover:translate-x-1" />
-                  </p>
+                  <h3 className="mt-4 text-3xl">{t.name}</h3>
                 </Link>
-                <a href={waLink(trekMsg(t.name))} target="_blank" rel="noreferrer" className="mt-2 inline-flex items-center gap-1.5 text-xs font-semibold text-muted-foreground hover:text-primary">
-                  <MessageCircle size={13} /> Enquire on WhatsApp
-                </a>
               </Reveal>
             ))}
           </div>
           <Link to="/treks" className="mt-16 inline-flex items-center gap-2 border-b border-foreground pb-1 font-semibold transition hover:gap-3">
-            See all 28 treks and pilgrimage packages <ArrowRight size={16} />
+            Browse trek details <ArrowRight size={16} />
           </Link>
         </div>
       </section>
@@ -155,7 +153,10 @@ function Home() {
       {/* Gallery */}
       <section className="bg-forest text-forest-foreground">
         <div className="mx-auto max-w-7xl px-5 py-20 md:px-10 md:py-28">
-          <Reveal><SectionHead light eyebrow="Moments from the trails" title="Our groups, on the mountain." /></Reveal>
+          <Reveal>
+            <SectionHead light eyebrow="Our expeditions" title="Moments From The Trails" />
+            <p className="mt-6 max-w-2xl text-lg opacity-85">Captured on real expeditions by our mountain leaders and trekkers across Uttarakhand and beyond.</p>
+          </Reveal>
           <div className="mt-12 grid grid-cols-2 gap-3 md:grid-cols-4 md:grid-rows-2 md:gap-4">
             {GALLERY.map((g, i) => (
               <button
@@ -208,8 +209,8 @@ function Home() {
           </Reveal>
           <div className="grid grid-cols-3 gap-4 md:gap-6">
             {[
-              { img: sildar.url, name: "Sildar Singh Rawat", role: "Founder" },
               { img: shishpal.url, name: "Shishpal Rana", role: "Founder" },
+              { img: sildar.url, name: "Sildar Singh Rawat", role: "Founder" },
               { img: vivesh.url, name: "Vivesh Rawat", role: "Co-founder" },
             ].map((f) => (
               <Reveal key={f.name}>
