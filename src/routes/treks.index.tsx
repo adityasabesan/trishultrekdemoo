@@ -56,7 +56,7 @@ function Treks() {
                 <div className="overflow-hidden">
                   <img src={t.photo.src} alt={t.photo.alt} loading="lazy" className="aspect-[4/3] w-full object-cover transition duration-700 group-hover:scale-105" />
                 </div>
-                <h3 className="mt-4 text-2xl">{t.name}</h3>
+                <h3 className="mt-4 text-2xl">{t.slug === "jandi-top" ? <><span className="classic-initial">J</span>{t.name.slice(1)}</> : t.name}</h3>
               </Link>
               <dl className="mt-2 grid grid-cols-2 gap-y-1 text-sm">
                 <dt className="text-muted-foreground">Altitude</dt><dd>{t.altitude ?? "Ask us"}</dd>
