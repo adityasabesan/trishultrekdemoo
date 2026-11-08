@@ -96,6 +96,11 @@
   font-weight: 600;
 }
 
+@utility classic-initial {
+  font-family: Georgia, "Times New Roman", serif;
+  letter-spacing: 0;
+}
+
 @utility hero-scrim {
   background: linear-gradient(
     180deg,
