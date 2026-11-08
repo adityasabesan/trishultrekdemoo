@@ -1,4 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { useEffect } from "react";
 import { SiteHeader, SiteFooter } from "@/components/site/Chrome";
 import { BackToTreks } from "@/components/site/BackToTreks";
 import { EnquiryForm } from "@/components/site/EnquiryForm";
@@ -29,6 +30,9 @@ export const Route = createFileRoute("/yatras/$slug")({
 
 function YatraPage() {
   const y = Route.useLoaderData();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [y.slug]);
   return (
     <div>
       <section className="relative min-h-[70vh] overflow-hidden">
