@@ -158,7 +158,6 @@ function Home() {
                 <img src={g.src} alt={g.alt} loading="lazy" className={`h-full w-full object-cover transition duration-700 group-hover:scale-105 ${i === 0 ? "aspect-square" : "aspect-[4/3]"} ${g.src === sunrise.url ? "object-[50%_60%]" : ""}`} />
                 <span className="absolute right-3 top-3 rounded-full bg-scrim/50 p-2 opacity-0 transition group-hover:opacity-100"><Expand size={14} /></span>
                 </Button>
-                {g.credit && g.page && <figcaption className="mt-2 text-xs text-forest-foreground/75">Photo: <a href={g.page} target="_blank" rel="noreferrer" className="underline">{g.credit}</a> · {g.license}</figcaption>}
               </figure>
             ))}
           </div>
