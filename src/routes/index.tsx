@@ -1,13 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowRight, MessageCircle, ShieldCheck, MapPin, Users, Leaf, Expand, Plus } from "lucide-react";
+import { ArrowRight, MessageCircle, ShieldCheck, MapPin, Users, Leaf, Expand } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SiteHeader, SiteFooter } from "@/components/site/Chrome";
 import { Reveal, QuoteRotator, Lightbox } from "@/components/site/Interactive";
 import { FEATURED, RENTALS, inr } from "@/data/treks";
 import { HOME_CATALOGUE } from "@/data/catalogue";
 import { HOME_STATS, waLink, mailLink } from "@/data/site";
-import { TRAIL_GALLERY as GALLERY, SANKRI_FAQ } from "@/data/homepage";
+import { TRAIL_GALLERY as GALLERY } from "@/data/homepage";
 import shishpal from "@/assets/Shishpal_Rana.jpeg.asset.json";
 import sildar from "@/assets/Singh_Rawat.jpeg.asset.json";
 import vivesh from "@/assets/Vivesh_Rawat.jpg.asset.json";
@@ -216,28 +216,6 @@ function Home() {
               </Reveal>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Sankri logistics */}
-      <section className="border-b">
-        <div className="mx-auto grid max-w-7xl gap-10 px-5 py-16 md:grid-cols-[1fr_1.3fr] md:px-10 md:py-20">
-          <Reveal>
-            <SectionHead eyebrow="Before you travel" title="Sankri logistics & FAQ" />
-            <Button asChild variant="link" className="mt-6 h-auto px-0 font-semibold"><Link to="/contact">Ask the team <ArrowRight size={16} /></Link></Button>
-          </Reveal>
-          <Reveal>
-            <div className="border-t">
-              {SANKRI_FAQ.map((faq) => (
-                <details key={faq.question} className="group border-b py-5">
-                  <summary className="flex cursor-pointer list-none items-start justify-between gap-4 font-semibold [&::-webkit-details-marker]:hidden">
-                    {faq.question}<Plus size={18} className="mt-1 shrink-0 text-primary transition-transform group-open:rotate-45" />
-                  </summary>
-                  <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground">{faq.answer}</p>
-                </details>
-              ))}
-            </div>
-          </Reveal>
         </div>
       </section>
 
