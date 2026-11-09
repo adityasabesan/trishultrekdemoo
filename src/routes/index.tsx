@@ -219,28 +219,6 @@ function Home() {
         </div>
       </section>
 
-      {/* Sankri logistics */}
-      <section className="border-b">
-        <div className="mx-auto grid max-w-7xl gap-10 px-5 py-16 md:grid-cols-[1fr_1.3fr] md:px-10 md:py-20">
-          <Reveal>
-            <SectionHead eyebrow="Before you travel" title="Sankri logistics & FAQ" />
-            <Button asChild variant="link" className="mt-6 h-auto px-0 font-semibold"><Link to="/contact">Ask the team <ArrowRight size={16} /></Link></Button>
-          </Reveal>
-          <Reveal>
-            <div className="border-t">
-              {SANKRI_FAQ.map((faq) => (
-                <details key={faq.question} className="group border-b py-5">
-                  <summary className="flex cursor-pointer list-none items-start justify-between gap-4 font-semibold [&::-webkit-details-marker]:hidden">
-                    {faq.question}<Plus size={18} className="mt-1 shrink-0 text-primary transition-transform group-open:rotate-45" />
-                  </summary>
-                  <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground">{faq.answer}</p>
-                </details>
-              ))}
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
       {/* Reviews */}
       <section className="mx-auto max-w-7xl px-5 py-20 md:px-10 md:py-28">
         <Reveal>
