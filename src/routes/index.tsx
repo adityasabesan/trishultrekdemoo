@@ -1,16 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowRight, MessageCircle, ShieldCheck, MapPin, Users, Leaf, Expand } from "lucide-react";
+import { ArrowRight, MessageCircle, ShieldCheck, MapPin, Users, Leaf, Expand, Plus } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { SiteHeader, SiteFooter } from "@/components/site/Chrome";
-import { Reveal, QuoteRotator, Lightbox, type GalleryImage } from "@/components/site/Interactive";
+import { Reveal, QuoteRotator, Lightbox } from "@/components/site/Interactive";
 import { FEATURED, RENTALS, inr } from "@/data/treks";
 import { HOME_CATALOGUE } from "@/data/catalogue";
 import { HOME_STATS, waLink, mailLink } from "@/data/site";
+import { TRAIL_GALLERY as GALLERY, SANKRI_FAQ } from "@/data/homepage";
 import shishpal from "@/assets/Shishpal_Rana.jpeg.asset.json";
 import sildar from "@/assets/Singh_Rawat.jpeg.asset.json";
 import vivesh from "@/assets/Vivesh_Rawat.jpg.asset.json";
-import summitGroup from "@/assets/Trek_everyone_image.jpeg.asset.json";
-import trailGroup from "@/assets/trek_ppl.jpeg.asset.json";
 import sunrise from "@/assets/summit-sunrise.jpeg.asset.json";
 
 const firstTrek = FEATURED[0];
@@ -50,15 +50,6 @@ function SectionHead({ eyebrow, title, light = false }: { eyebrow: string; title
   );
 }
 
-const GALLERY: GalleryImage[] = [
-  { src: trailGroup.url, alt: "A Trishul Treks group at the Sankri–Kedarkantha trailhead sign" },
-  { src: summitGroup.url, alt: "Trishul Treks trekkers on a snowy summit under a clear blue sky" },
-  { src: sunrise.url, alt: "Two trekkers on a snowy ridge at sunrise above Himalayan ranges" },
-  FEATURED[0]!.photos[2]!,
-  FEATURED[2]!.photos[2]!,
-  FEATURED[5]!.photos[2]!,
-];
-
 function Home() {
   const [lb, setLb] = useState<number | null>(null);
   return (
@@ -94,7 +85,7 @@ function Home() {
       {/* Intro */}
       <section className="mx-auto grid max-w-7xl gap-10 px-5 py-20 md:grid-cols-[1fr_1.2fr] md:px-10 md:py-28">
         <Reveal>
-          <SectionHead eyebrow="Who we are" title="A small local team, based in Sankri." />
+          <SectionHead eyebrow="Who we are" title="Himalayan journeys, rooted in Sankri." />
         </Reveal>
         <Reveal className="self-end">
           <p className="text-lg leading-relaxed text-muted-foreground">
@@ -112,6 +103,9 @@ function Home() {
           <Reveal>
             <SectionHead eyebrow="Treks & yatras" title="Explore Our Treks & Yatras" />
             <p className="mt-6 max-w-2xl text-lg text-muted-foreground">From beautiful Himalayan valleys and alpine meadows to challenging mountain crossings and sacred pilgrimages, discover journeys across the Himalayas.</p>
+            <Button asChild variant="link" className="mt-6 h-auto rounded-none border-b border-foreground px-0 pb-1 text-base font-semibold text-foreground hover:no-underline">
+              <Link to="/treks">Browse trek details <ArrowRight size={16} /></Link>
+            </Button>
           </Reveal>
           <div data-testid="home-catalogue" className="mt-14 grid gap-x-8 gap-y-14 md:grid-cols-2 lg:grid-cols-3">
             {HOME_CATALOGUE.map((t, i) => (
@@ -125,15 +119,12 @@ function Home() {
               </Reveal>
             ))}
           </div>
-          <Link to="/treks" className="mt-16 inline-flex items-center gap-2 border-b border-foreground pb-1 font-semibold transition hover:gap-3">
-            Browse trek details <ArrowRight size={16} />
-          </Link>
         </div>
       </section>
 
       {/* Why choose us */}
       <section className="mx-auto max-w-7xl px-5 py-20 md:px-10 md:py-28">
-        <Reveal><SectionHead eyebrow="Why trek with us" title="Local, small and straightforward." /></Reveal>
+        <Reveal><SectionHead eyebrow="Why trek with us" title="Mountain knowledge. Thoughtful guidance." /></Reveal>
         <div className="mt-14 grid gap-10 border-t pt-10 sm:grid-cols-2 lg:grid-cols-4">
           {[
             { icon: MapPin, t: "Based at the trailhead", d: "We live and work in Sankri, the starting village for many of our routes." },
@@ -155,19 +146,20 @@ function Home() {
         <div className="mx-auto max-w-7xl px-5 py-20 md:px-10 md:py-28">
           <Reveal>
             <SectionHead light eyebrow="Our expeditions" title="Moments From The Trails" />
-            <p className="mt-6 max-w-2xl text-lg opacity-85">Captured on real expeditions by our mountain leaders and trekkers across Uttarakhand and beyond.</p>
+            <p className="mt-6 max-w-2xl text-lg opacity-85">Moments from our trekkers, alongside genuine photographs of Himalayan trails and landscapes.</p>
           </Reveal>
           <div className="mt-12 grid grid-cols-2 gap-3 md:grid-cols-4 md:grid-rows-2 md:gap-4">
             {GALLERY.map((g, i) => (
-              <button
+              <figure
                 key={g.src}
-                onClick={() => setLb(i)}
-                aria-label={`View photo: ${g.alt}`}
-                className={`group relative overflow-hidden ${i === 0 ? "col-span-2 row-span-2" : ""}`}
+                className={i === 0 ? "col-span-2 row-span-2" : ""}
               >
+                <Button variant="ghost" onClick={() => setLb(i)} aria-label={`View photo: ${g.alt}`} className={`group relative block h-auto w-full overflow-hidden rounded-none p-0 hover:bg-transparent ${i === 0 ? "aspect-square" : "aspect-[4/3]"}`}>
                 <img src={g.src} alt={g.alt} loading="lazy" className={`h-full w-full object-cover transition duration-700 group-hover:scale-105 ${i === 0 ? "aspect-square" : "aspect-[4/3]"} ${g.src === sunrise.url ? "object-[50%_60%]" : ""}`} />
                 <span className="absolute right-3 top-3 rounded-full bg-scrim/50 p-2 opacity-0 transition group-hover:opacity-100"><Expand size={14} /></span>
-              </button>
+                </Button>
+                {g.credit && g.page && <figcaption className="mt-2 text-xs text-forest-foreground/75">Photo: <a href={g.page} target="_blank" rel="noreferrer" className="underline">{g.credit}</a> · {g.license}</figcaption>}
+              </figure>
             ))}
           </div>
         </div>
@@ -224,6 +216,28 @@ function Home() {
               </Reveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Sankri logistics */}
+      <section className="border-b">
+        <div className="mx-auto grid max-w-7xl gap-10 px-5 py-16 md:grid-cols-[1fr_1.3fr] md:px-10 md:py-20">
+          <Reveal>
+            <SectionHead eyebrow="Before you travel" title="Sankri logistics & FAQ" />
+            <Button asChild variant="link" className="mt-6 h-auto px-0 font-semibold"><Link to="/contact">Ask the team <ArrowRight size={16} /></Link></Button>
+          </Reveal>
+          <Reveal>
+            <div className="border-t">
+              {SANKRI_FAQ.map((faq) => (
+                <details key={faq.question} className="group border-b py-5">
+                  <summary className="flex cursor-pointer list-none items-start justify-between gap-4 font-semibold [&::-webkit-details-marker]:hidden">
+                    {faq.question}<Plus size={18} className="mt-1 shrink-0 text-primary transition-transform group-open:rotate-45" />
+                  </summary>
+                  <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground">{faq.answer}</p>
+                </details>
+              ))}
+            </div>
+          </Reveal>
         </div>
       </section>
 
