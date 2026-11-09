@@ -7,6 +7,6 @@
 - [ ] Confirm new yatra day-wise operating plans, durations and prices — awaiting client details; pages clearly mark them unconfirmed.
 
 ## Homepage refinements
-- [ ] Replace understated team headings and move the trek-details link above the catalogue.
-- [ ] Add three genuine Uttarakhand photographs without replacing existing images.
-- [ ] Add a concise Sankri logistics FAQ and verify desktop/mobile interactions.
+- [x] Replace understated team headings and move the trek-details link above the catalogue.
+- [x] Add three genuine Uttarakhand photographs without replacing existing images.
+- [x] Add a concise Sankri logistics FAQ and verify desktop/mobile interactions.
