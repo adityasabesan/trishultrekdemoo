@@ -3,10 +3,10 @@ import { ArrowRight, MessageCircle } from "lucide-react";
 import { SiteHeader, SiteFooter, PageIntro, SAFETY_NOTICE } from "@/components/site/Chrome";
 import { Reveal } from "@/components/site/Interactive";
 import { waLink } from "@/data/site";
-import shishpal from "@/assets/Shishpal_Rana.jpeg.asset.json";
-import sildar from "@/assets/Singh_Rawat.jpeg.asset.json";
-import vivesh from "@/assets/Vivesh_Rawat.jpg.asset.json";
-import trailGroup from "@/assets/trek_ppl.jpeg.asset.json";
+import shishpal from "@/assets/Shishpal_Rana.jpeg";
+import sildar from "@/assets/Singh_Rawat.jpeg";
+import vivesh from "@/assets/Vivesh_Rawat.jpg";
+import trailGroup from "@/assets/trek_ppl.jpeg";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -33,7 +33,7 @@ function About() {
       {/* Story */}
       <section className="mx-auto grid max-w-7xl gap-12 px-5 py-14 md:grid-cols-[1.2fr_1fr] md:px-10">
         <Reveal>
-          <img src={trailGroup.url} alt="A Trishul Treks group at the Sankri–Kedarkantha trailhead sign" className="aspect-[4/3] w-full object-cover" />
+          <img src={trailGroup} alt="A Trishul Treks group at the Sankri–Kedarkantha trailhead sign" className="aspect-[4/3] w-full object-cover" />
         </Reveal>
         <Reveal className="space-y-5 self-center text-lg leading-relaxed text-muted-foreground">
           <p className="eyebrow text-primary">Our story</p>
@@ -53,7 +53,7 @@ function About() {
       <section className="border-y bg-card">
         <div className="mx-auto grid max-w-7xl gap-12 px-5 py-20 md:grid-cols-[1fr_1.2fr] md:px-10 md:py-28">
           <Reveal>
-            <img src={shishpal.url} alt="Shishpal Rana, Founder of Trishul Treks" className="aspect-[4/5] w-full object-cover" />
+            <img src={shishpal} alt="Shishpal Rana, Founder of Trishul Treks" className="aspect-[4/5] w-full object-cover" />
           </Reveal>
           <Reveal className="self-center">
             <p className="eyebrow text-primary">Founder</p>
@@ -81,8 +81,8 @@ function About() {
         </Reveal>
         <div className="mt-12 grid gap-10 sm:grid-cols-2">
           {[
-            { img: sildar.url, name: "Sildar Singh Rawat", role: "Founder", text: "Founder of Trishul Treks, part of the Sankri team that plans and runs our treks." },
-            { img: vivesh.url, name: "Vivesh Rawat", role: "Co-founder", text: "Co-founder of Trishul Treks, part of the Sankri team that plans and runs our treks." },
+            { img: sildar, name: "Sildar Singh Rawat", role: "Founder", text: "Founder of Trishul Treks, part of the Sankri team that plans and runs our treks." },
+            { img: vivesh, name: "Vivesh Rawat", role: "Co-founder", text: "Co-founder of Trishul Treks, part of the Sankri team that plans and runs our treks." },
           ].map((f) => (
             <Reveal key={f.name}>
               <figure className="grid grid-cols-[0.8fr_1fr] gap-6">

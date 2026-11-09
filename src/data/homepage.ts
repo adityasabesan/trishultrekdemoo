@@ -1,8 +1,8 @@
 import { FEATURED, type Photo } from "./treks";
 import { SITE } from "./site";
-import summitGroup from "@/assets/Trek_everyone_image.jpeg.asset.json";
-import trailGroup from "@/assets/trek_ppl.jpeg.asset.json";
-import sunrise from "@/assets/summit-sunrise.jpeg.asset.json";
+import summitGroup from "@/assets/Trek_everyone_image.jpeg";
+import trailGroup from "@/assets/trek_ppl.jpeg";
+import sunrise from "@/assets/summit-sunrise.jpeg";
 
 type TrailPhoto = { src: string; alt: string; credit?: string; license?: string; page?: string };
 
@@ -11,9 +11,9 @@ const additionalDestinations = [FEATURED[0]?.photos[1], FEATURED[1]?.photos[1], 
 const isPhoto = (photo: Photo | undefined): photo is Photo => Boolean(photo);
 
 export const TRAIL_GALLERY: TrailPhoto[] = [
-  { src: trailGroup.url, alt: "A Trishul Treks group at the Sankri–Kedarkantha trailhead sign" },
-  { src: summitGroup.url, alt: "Trishul Treks trekkers on a snowy summit under a clear blue sky" },
-  { src: sunrise.url, alt: "Two trekkers on a snowy ridge at sunrise above Himalayan ranges" },
+  { src: trailGroup, alt: "A Trishul Treks group at the Sankri–Kedarkantha trailhead sign" },
+  { src: summitGroup, alt: "Trishul Treks trekkers on a snowy summit under a clear blue sky" },
+  { src: sunrise, alt: "Two trekkers on a snowy ridge at sunrise above Himalayan ranges" },
   ...existingDestinations.filter(isPhoto),
   ...additionalDestinations.filter(isPhoto),
 ];
