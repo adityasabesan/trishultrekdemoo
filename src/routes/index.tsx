@@ -1,13 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowRight, MessageCircle, ShieldCheck, MapPin, Users, Leaf, Expand, Plus } from "lucide-react";
+import { ArrowRight, MessageCircle, ShieldCheck, MapPin, Users, Leaf, Expand } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SiteHeader, SiteFooter } from "@/components/site/Chrome";
 import { Reveal, QuoteRotator, Lightbox } from "@/components/site/Interactive";
 import { FEATURED, RENTALS, inr } from "@/data/treks";
 import { HOME_CATALOGUE } from "@/data/catalogue";
 import { HOME_STATS, waLink, mailLink } from "@/data/site";
-import { TRAIL_GALLERY as GALLERY, SANKRI_FAQ } from "@/data/homepage";
+import { TRAIL_GALLERY as GALLERY } from "@/data/homepage";
 import shishpal from "@/assets/Shishpal_Rana.jpeg.asset.json";
 import sildar from "@/assets/Singh_Rawat.jpeg.asset.json";
 import vivesh from "@/assets/Vivesh_Rawat.jpg.asset.json";
