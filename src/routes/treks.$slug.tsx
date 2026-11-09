@@ -219,17 +219,6 @@ function FeaturedPage({ t }: { t: NonNullable<ReturnType<typeof getFeatured>> })
           </div>
         </div>
       </section>
-
-      <section className="mx-auto max-w-7xl px-5 py-6 text-[11px] text-muted-foreground md:px-10">
-        Photos:{" "}
-        {t.photos.map((p, i) => (
-          <span key={p.src}>
-            {i > 0 && " · "}
-            <a href={p.page} target="_blank" rel="noreferrer" className="underline">{p.credit}</a> ({p.license})
-          </span>
-        ))}
-        , via Wikimedia Commons.
-      </section>
       <SiteFooter />
     </div>
   );

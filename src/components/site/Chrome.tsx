@@ -96,7 +96,7 @@ export function SiteFooter() {
       </div>
       <div className="border-t border-forest-foreground/15">
         <p className="mx-auto max-w-7xl px-5 py-5 text-xs opacity-60 md:px-10">
-          © {new Date().getFullYear()} Trishul Treks. Destination photographs from Wikimedia Commons, credited where shown.
+          © {new Date().getFullYear()} Trishul Treks.
         </p>
       </div>
     </footer>
