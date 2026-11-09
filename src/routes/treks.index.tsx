@@ -67,9 +67,6 @@ function Treks() {
               <a href={waLink(`Hello Trishul Treks, I'd like details for the ${t.name} trek.`)} target="_blank" rel="noreferrer" className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-primary">
                 Enquire <ArrowRight size={14} />
               </a>
-              <p className="mt-2 text-[11px] text-muted-foreground">
-                Photo: <a href={t.photo.page} target="_blank" rel="noreferrer" className="underline">{t.photo.credit}</a>, {t.photo.license}
-              </p>
             </article>
           ))}
         </div>

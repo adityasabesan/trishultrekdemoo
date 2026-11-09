@@ -73,9 +73,6 @@ function YatraPage() {
           <div className="mt-10 rounded-sm bg-background p-6 text-foreground md:p-10"><EnquiryForm type="Pilgrimage Package" item={y.name} /></div>
         </div>
       </section>
-      <section className="mx-auto max-w-7xl px-5 py-6 text-[11px] text-muted-foreground md:px-10">
-        Photo: <a href={y.photo.page} target="_blank" rel="noreferrer" className="underline">{y.photo.credit}</a> ({y.photo.license}), via Wikimedia Commons.
-      </section>
       <SiteFooter />
     </div>
   );

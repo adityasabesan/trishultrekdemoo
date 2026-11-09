@@ -42,9 +42,6 @@ function Rentals() {
                 <a href={waLink(rentalMsg(r.item))} target="_blank" rel="noreferrer" className="mt-5 inline-flex w-fit items-center gap-2 rounded-sm border border-primary px-5 py-2.5 text-sm font-semibold text-primary transition hover:bg-primary hover:text-primary-foreground">
                   <MessageCircle size={15} /> Enquire on WhatsApp
                 </a>
-                <p className="mt-3 text-[11px] text-muted-foreground">
-                  Photo for illustration: <a href={r.photo.page} target="_blank" rel="noreferrer" className="underline">{r.photo.credit}</a>, {r.photo.license}
-                </p>
               </article>
             </Reveal>
           ))}
