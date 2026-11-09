@@ -1,4 +1,4 @@
-import vaishnoPhoto from "@/assets/vaishno-devi-bhawan.jpg.asset.json";
+import vaishnoPhoto from "@/assets/vaishno-devi-bhawan.jpg";
 import photos from "./photos.json";
 import type { Photo } from "./treks";
 
@@ -50,7 +50,7 @@ export const YATRAS: Yatra[] = [
     duration: null,
     price: null,
     photo: {
-      src: vaishnoPhoto.url,
+      src: vaishnoPhoto,
       alt: "Shri Mata Vaishno Devi Bhawan nestled in the Trikuta hills",
       credit: "Sudeep Pramanik",
       license: "CC BY-SA 4.0",

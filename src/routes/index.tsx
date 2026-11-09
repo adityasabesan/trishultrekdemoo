@@ -8,10 +8,10 @@ import { FEATURED, RENTALS, inr } from "@/data/treks";
 import { HOME_CATALOGUE } from "@/data/catalogue";
 import { HOME_STATS, waLink, mailLink } from "@/data/site";
 import { TRAIL_GALLERY as GALLERY } from "@/data/homepage";
-import shishpal from "@/assets/Shishpal_Rana.jpeg.asset.json";
-import sildar from "@/assets/Singh_Rawat.jpeg.asset.json";
-import vivesh from "@/assets/Vivesh_Rawat.jpg.asset.json";
-import sunrise from "@/assets/summit-sunrise.jpeg.asset.json";
+import shishpal from "@/assets/Shishpal_Rana.jpeg";
+import sildar from "@/assets/Singh_Rawat.jpeg";
+import vivesh from "@/assets/Vivesh_Rawat.jpg";
+import sunrise from "@/assets/summit-sunrise.jpeg";
 
 const firstTrek = FEATURED[0];
 if (!firstTrek) throw new Error("The homepage requires the approved hero trek.");
@@ -155,7 +155,7 @@ function Home() {
                 className={i === 0 ? "col-span-2 row-span-2" : ""}
               >
                 <Button variant="ghost" onClick={() => setLb(i)} aria-label={`View photo: ${g.alt}`} className={`group relative block h-auto w-full overflow-hidden rounded-none p-0 hover:bg-transparent ${i === 0 ? "aspect-square" : "aspect-[4/3]"}`}>
-                <img src={g.src} alt={g.alt} loading="lazy" className={`h-full w-full object-cover transition duration-700 group-hover:scale-105 ${i === 0 ? "aspect-square" : "aspect-[4/3]"} ${g.src === sunrise.url ? "object-[50%_60%]" : ""}`} />
+                <img src={g.src} alt={g.alt} loading="lazy" className={`h-full w-full object-cover transition duration-700 group-hover:scale-105 ${i === 0 ? "aspect-square" : "aspect-[4/3]"} ${g.src === sunrise ? "object-[50%_60%]" : ""}`} />
                 <span className="absolute right-3 top-3 rounded-full bg-scrim/50 p-2 opacity-0 transition group-hover:opacity-100"><Expand size={14} /></span>
                 </Button>
               </figure>
@@ -200,9 +200,9 @@ function Home() {
           </Reveal>
           <div className="grid grid-cols-3 gap-4 md:gap-6">
             {[
-              { img: shishpal.url, name: "Shishpal Rana", role: "Founder" },
-              { img: sildar.url, name: "Sildar Singh Rawat", role: "Founder" },
-              { img: vivesh.url, name: "Vivesh Rawat", role: "Co-founder" },
+              { img: shishpal, name: "Shishpal Rana", role: "Founder" },
+              { img: sildar, name: "Sildar Singh Rawat", role: "Founder" },
+              { img: vivesh, name: "Vivesh Rawat", role: "Co-founder" },
             ].map((f) => (
               <Reveal key={f.name}>
                 <figure>

@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Menu, X, Phone, Mail, MessageCircle, MapPin, Ban } from "lucide-react";
-import logo from "@/assets/Trishul_logo.jpeg.asset.json";
+import logo from "@/assets/Trishul_logo.jpeg";
 import { SITE, telLink, mailLink, waLink } from "@/data/site";
 
 export const NAV = [
@@ -21,7 +21,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 bg-forest text-forest-foreground shadow-[0_10px_28px_-16px_color-mix(in_oklab,var(--scrim)_80%,transparent)] backdrop-blur-md supports-[backdrop-filter]:bg-forest/95">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 md:px-10">
         <Link to="/" className="flex items-center gap-3" aria-label="Trishul Treks home" onClick={() => setOpen(false)}>
-          <img src={logo.url} alt="Trishul Treks logo" className="h-11 w-11 rounded-full bg-ivory object-contain ring-2 ring-forest-foreground/20" />
+          <img src={logo} alt="Trishul Treks logo" className="h-11 w-11 rounded-full bg-ivory object-contain ring-2 ring-forest-foreground/20" />
           <span className="font-display text-xl tracking-tight">Trishul Treks</span>
         </Link>
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Main">
@@ -72,7 +72,7 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 md:grid-cols-[1.4fr_1fr_1fr] md:px-10">
         <div>
           <div className="flex items-center gap-3">
-            <img src={logo.url} alt="" className="h-12 w-12 rounded-full bg-ivory object-contain" />
+            <img src={logo} alt="" className="h-12 w-12 rounded-full bg-ivory object-contain" />
             <p className="font-display text-3xl">Trishul Treks</p>
           </div>
           <p className="mt-4 max-w-xs text-sm opacity-70">
