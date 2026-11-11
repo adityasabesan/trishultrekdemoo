@@ -3,7 +3,7 @@ import { Phone, Mail, MessageCircle, MapPin, Ban } from "lucide-react";
 import { z } from "zod";
 import { SiteHeader, SiteFooter, SAFETY_NOTICE } from "@/components/site/Chrome";
 import { EnquiryForm, ENQUIRY_TYPES } from "@/components/site/EnquiryForm";
-import { SITE, telLink, telLink2, mailLink, waLink } from "@/data/site";
+import { SITE, telLink, mailLink, waLink } from "@/data/site";
 
 export const Route = createFileRoute("/contact")({
   validateSearch: z.object({ type: z.enum(ENQUIRY_TYPES).optional(), item: z.string().optional() }),
@@ -24,8 +24,7 @@ function Contact() {
   const { type, item } = Route.useSearch();
   const items = [
     { icon: Phone, label: "Call", value: SITE.phoneDisplay, href: telLink },
-    { icon: Phone, label: "Call (alternate)", value: SITE.phone2Display, href: telLink2 },
-    { icon: MessageCircle, label: "WhatsApp", value: SITE.phoneDisplay, href: waLink(), ext: true },
+    { icon: MessageCircle, label: "WhatsApp", value: SITE.whatsappDisplay, href: waLink(), ext: true },
     { icon: Mail, label: "Email", value: SITE.email, href: mailLink() },
     { icon: MapPin, label: "Base", value: SITE.base },
   ];
