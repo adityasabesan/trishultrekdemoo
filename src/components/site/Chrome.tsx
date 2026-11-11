@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Menu, X, Phone, Mail, MessageCircle, MapPin, Ban } from "lucide-react";
 import logo from "@/assets/Trishul_logo.jpeg";
-import { SITE, telLink, mailLink, waLink } from "@/data/site";
+import { SITE, telLink, telLink2, mailLink, waLink } from "@/data/site";
 
 export const NAV = [
   { to: "/", label: "Home" },
@@ -83,6 +83,7 @@ export function SiteFooter() {
         <div className="space-y-3 text-sm">
           <p className="eyebrow text-ochre">Reach us</p>
           <a href={telLink} className="flex items-center gap-2 hover:text-ochre"><Phone size={15} /> {SITE.phoneDisplay}</a>
+          <a href={telLink2} className="flex items-center gap-2 hover:text-ochre"><Phone size={15} /> {SITE.phone2Display}</a>
           <a href={waLink()} target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:text-ochre"><MessageCircle size={15} /> WhatsApp</a>
           <a href={mailLink()} className="flex items-center gap-2 hover:text-ochre"><Mail size={15} /> {SITE.email}</a>
           <p className="flex items-center gap-2 opacity-80"><MapPin size={15} /> {SITE.base}</p>
