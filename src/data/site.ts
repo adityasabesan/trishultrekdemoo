@@ -1,10 +1,12 @@
 // Central contact config — update here and it changes everywhere.
-// Public numbers are the ones on the current live site. Newer numbers
-// (6397202114, +91 93890 13067) are NOT used until the client confirms them.
+// Client-confirmed: +91 93890 13067 is a second CALL number; calls and
+// WhatsApp both work on +91 63972 05114. 6397202114 remains unconfirmed.
 export const SITE = {
   name: "Trishul Treks",
   phoneDisplay: "+91 63972 05114",
   phoneE164: "+916397205114",
+  phone2Display: "+91 93890 13067",
+  phone2E164: "+919389013067",
   whatsapp: "916397205114",
   email: "trishultreks@gmail.com",
   base: "Sankri, Uttarakhand, India",
@@ -18,6 +20,7 @@ export const HOME_STATS = [
 ] as const;
 
 export const telLink = `tel:${SITE.phoneE164}`;
+export const telLink2 = `tel:${SITE.phone2E164}`;
 export const mailLink = (subject = "Trek enquiry", body = "") =>
   `mailto:${SITE.email}?subject=${encodeURIComponent(subject)}${body ? `&body=${encodeURIComponent(body)}` : ""}`;
 export const waLink = (text = "Hello Trishul Treks, I'd like to plan a trek.") =>
